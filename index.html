@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratford Advertisements — Meta Advertising for Businesses That Mean to Grow</title>
+<meta name="description" content="Stratford Advertisements builds, runs, and optimizes Meta ad campaigns for growing businesses. We never touch your ad budget — it goes straight from your card to Facebook. Begin with a no-lock trial month.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="Stratford Advertisements — Meta Advertising for Businesses That Mean to Grow">
+<meta property="og:description" content="We build and run Meta ad campaigns that bring you customers. We never touch your ad budget. Begin with a no-lock trial month.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stratfordads.com">
+<meta property="og:image" content="https://stratfordads.com/assets/hero-bg.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --ink:#0a0a0a; --ink2:#111211; --paper:#f7f5f0; --paper2:#efece4;
+    --gold:#c9a24b; --gold-soft:#d9bd7a; --green:#1c4b3a; --muted:#8a867d; --line:#e2ddd2;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .serif{font-family:var(--serif);}
+
+  /* ===== NAV ===== */
+  header{position:absolute;top:0;left:0;right:0;z-index:20;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:30px 0;}
+  .brand{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:1.5px;color:#fff;}
+  .brand em{color:var(--gold);font-style:normal;}
+  .navlinks{display:flex;align-items:center;gap:38px;}
+  .navlinks a{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.82);font-weight:400;transition:color .2s;}
+  .navlinks a:hover{color:var(--gold-soft);}
+  .navlinks .cta{border:1px solid rgba(255,255,255,0.45);padding:11px 22px;border-radius:2px;color:#fff;}
+  .navlinks .cta:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+  @media(max-width:760px){.navlinks{gap:16px;}.navlinks a:not(.cta){display:none;}}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:url('assets/hero-bg.jpg') center/cover no-repeat;}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,8,10,0.78) 0%,rgba(6,8,10,0.45) 55%,rgba(6,8,10,0.25) 100%);}
+  .hero-inner{position:relative;z-index:5;max-width:720px;color:#fff;padding:120px 0 60px;}
+  .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:26px;font-weight:400;}
+  .hero h1{font-family:var(--serif);font-size:66px;line-height:1.05;font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
+  .hero h1 em{font-style:italic;color:var(--gold-soft);}
+  .hero p{font-size:19px;font-weight:300;color:rgba(255,255,255,0.88);max-width:560px;margin-bottom:42px;}
+  .btnrow{display:flex;gap:18px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:16px 34px;border-radius:2px;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .25s;}
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--gold-soft);}
+  .btn-line{border:1px solid rgba(255,255,255,0.5);color:#fff;}
+  .btn-line:hover{background:rgba(255,255,255,0.1);border-color:#fff;}
+  @media(max-width:760px){.hero h1{font-size:42px;}.hero p{font-size:17px;}}
+
+  /* ===== SECTION FRAME ===== */
+  section{padding:120px 0;}
+  .center{text-align:center;}
+  .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500;}
+  .section-title{font-family:var(--serif);font-size:44px;font-weight:500;line-height:1.15;margin-bottom:22px;}
+  .section-title em{font-style:italic;color:var(--green);}
+  .lead{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;font-weight:300;}
+  .rule{width:54px;height:1px;background:var(--gold);margin:0 auto 26px;}
+
+  /* ===== SERVICES ===== */
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);margin-top:70px;border:1px solid var(--line);}
+  .svc{background:var(--paper);padding:46px 34px;transition:background .3s;}
+  .svc:hover{background:var(--paper2);}
+  .svc .n{font-family:var(--serif);font-size:30px;color:var(--gold);font-weight:600;margin-bottom:18px;}
+  .svc h3{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:12px;}
+  .svc p{font-size:15px;color:var(--muted);font-weight:300;}
+
+  /* ===== TRUST (dark) ===== */
+  .trust{background:var(--ink);color:#fff;}
+  .trust .section-title em{color:var(--gold-soft);}
+  .trust .lead{color:rgba(255,255,255,0.7);}
+  .pots{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:860px;margin:64px auto 0;}
+  .pot{border:1px solid rgba(201,162,75,0.35);border-radius:3px;padding:40px 34px;background:linear-gradient(160deg,rgba(201,162,75,0.06),rgba(255,255,255,0.01));}
+  .pot .tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .pot h4{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:14px;color:#fff;}
+  .pot p{font-size:15px;color:rgba(255,255,255,0.75);font-weight:300;}
+  .pot strong{color:var(--gold-soft);font-weight:500;}
+  .keys{text-align:center;margin-top:52px;font-family:var(--serif);font-size:28px;font-style:italic;color:var(--gold-soft);}
+  @media(max-width:700px){.pots{grid-template-columns:1fr;}}
+
+  /* ===== HOW (paper) ===== */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;margin-top:70px;}
+  .step{text-align:center;}
+  .step .sn{font-family:var(--serif);font-size:40px;color:var(--gold);font-weight:600;line-height:1;margin-bottom:18px;}
+  .step h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;}
+  .step p{font-size:14.5px;color:var(--muted);font-weight:300;}
+
+  /* ===== PRICING (green) ===== */
+  .pricing{background:var(--green);color:#fff;}
+  .pricing .eyebrow{color:var(--gold-soft);}
+  .pricing .section-title{color:#fff;}
+  .price-card{max-width:520px;margin:60px auto 0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:52px 46px;text-align:center;}
+  .price-card .tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
+  .price-card .amt{font-family:var(--serif);font-size:52px;font-weight:600;line-height:1;margin-bottom:8px;}
+  .price-card .sub{color:rgba(255,255,255,0.75);font-size:15px;margin-bottom:34px;}
+  .price-card ul{list-style:none;text-align:left;margin-bottom:38px;}
+  .price-card li{padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.12);font-size:15px;font-weight:300;color:rgba(255,255,255,0.9);}
+  .price-card li:before{content:"—";color:var(--gold-soft);margin-right:12px;}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--paper2);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:56px 0;text-align:center;font-size:13px;font-weight:300;letter-spacing:0.3px;}
+  footer .brand{font-size:20px;margin-bottom:14px;display:inline-block;}
+  footer a{color:var(--gold-soft);}
+  footer .fine{margin-top:18px;font-size:12px;color:rgba(255,255,255,0.35);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">STRATFORD<em>.</em></div>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#trust">Your Money</a>
+        <a href="#how">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="cta">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="kicker">Meta &amp; Facebook Advertising</div>
+      <h1>Advertising built for businesses that <em>mean to grow.</em></h1>
+      <p>We design, run, and refine Meta ad campaigns that bring you customers — without you ever touching Ads Manager, and without us ever touching your budget.</p>
+      <div class="btnrow">
+        <a href="#contact" class="btn btn-gold">Begin Your Trial Month</a>
+        <a href="#trust" class="btn btn-line">How We Handle Your Money</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap center">
+    <div class="rule"></div>
+    <div class="eyebrow">What We Do</div>
+    <h2 class="section-title">Every part of your advertising, <em>handled.</em></h2>
+    <p class="lead">From the first strategy call to the leads landing in your inbox, we own the entire process — so you can stay focused on running your business.</p>
+    <div class="grid4">
+      <div class="svc"><div class="n">01</div><h3>Strategy</h3><p>We identify precisely who to target and how to reach the customers most likely to buy from you.</p></div>
+      <div class="svc"><div class="n">02</div><h3>Creative</h3><p>Scroll-stopping copy and visuals, built and tested until your best-performing ad wins.</p></div>
+      <div class="svc"><div class="n">03</div><h3>Optimization</h3><p>We watch performance daily, cut what wastes money, and scale what works.</p></div>
+      <div class="svc"><div class="n">04</div><h3>Reporting</h3><p>Your own live dashboard — visitors, leads, and results — available to you at any hour.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="trust" class="trust">
+  <div class="wrap center">
+    <div class="rule"></div>
+    <div class="eyebrow">Your Money Is Safe</div>
+    <h2 class="section-title">We never touch your <em>ad budget.</em></h2>
+    <p class="lead">There are only ever two separate pots — and your advertising budget never passes through our hands.</p>
+    <div class="pots">
+      <div class="pot">
+        <div class="tag">Pot One</div>
+        <h4>Your ad budget</h4>
+        <p>Goes <strong>directly from your card to Facebook</strong>, billed to an ad account <strong>you own</strong>. We never hold it, move it, or see your card number.</p>
+      </div>
+      <div class="pot">
+        <div class="tag">Pot Two</div>
+        <h4>Our management fee</h4>
+        <p>A separate flat monthly fee for the work we do. This is the <strong>only</strong> money Stratford ever receives — paid securely by card.</p>
+      </div>
+    </div>
+    <div class="keys">"Keys, not the wallet."</div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap center">
+    <div class="rule"></div>
+    <div class="eyebrow">How It Works</div>
+    <h2 class="section-title">Live in days, <em>not weeks.</em></h2>
+    <p class="lead">A simple, transparent path from first hello to your first leads.</p>
+    <div class="steps">
+      <div class="step"><div class="sn">I</div><h3>Grant Access</h3><p>You give us partner access to your ad account — no passwords, revocable in a single click. Like sharing a document.</p></div>
+      <div class="step"><div class="sn">II</div><h3>We Build</h3><p>We create your campaigns, audiences, and creative, and set up tracking so every lead is measured.</p></div>
+      <div class="step"><div class="sn">III</div><h3>We Launch</h3><p>Ads go live. We watch daily, cut waste, and scale what works — while your budget goes straight to Facebook.</p></div>
+      <div class="step"><div class="sn">IV</div><h3>You Grow</h3><p>Customers come in. You track everything in your own live dashboard and close the deals.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="wrap center">
+    <div class="rule"></div>
+    <div class="eyebrow">Simple, Honest Pricing</div>
+    <h2 class="section-title">Begin with <em>zero risk.</em></h2>
+    <div class="price-card">
+      <div class="tag">First Month — Trial</div>
+      <div class="amt serif">No Lock-In</div>
+      <div class="sub">14-day free trial · cancel anytime · you keep everything</div>
+      <ul>
+        <li>Full campaign setup &amp; management</li>
+        <li>Custom ad copy &amp; creative</li>
+        <li>Your own live results dashboard</li>
+        <li>Weekly updates &amp; fast replies</li>
+        <li>Full ownership of your ad account</li>
+      </ul>
+      <a href="#contact" class="btn btn-gold" style="display:block;">Claim Your Trial Month</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap center">
+    <div class="rule"></div>
+    <div class="eyebrow">Get Started</div>
+    <h2 class="section-title">Let's grow <em>your business.</em></h2>
+    <p class="lead" style="margin-bottom:36px;">Tell us about your business and we'll put together a plan. No pressure, no commitment.</p>
+    <a href="mailto:ethan@stratfordads.com?subject=Interested%20in%20Stratford%20Advertisements" class="btn btn-gold">Email Us — ethan@stratfordads.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">STRATFORD<em style="color:var(--gold-soft);font-style:normal;">.</em></div>
+    <div>Facebook &amp; Meta Advertising Management</div>
+    <div style="margin-top:8px;"><a href="mailto:ethan@stratfordads.com">ethan@stratfordads.com</a></div>
+    <div class="fine">© 2026 Stratford Advertisements. Your ad budget always stays in an account you own.</div>
+  </div>
+</footer>
+
+</body>
+</html>
