@@ -17,12 +17,20 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --ink:#0b0d10; --ink2:#12151a; --ink3:#171b21; --paper:#f7f5f0; --paper2:#efece4;
-    --gold:#c9a24b; --gold-soft:#d9bd7a; --muted:#8a867d; --muted-d:#9aa0a6; --line:#e2ddd2; --line-d:#262a31;
+    /* All-dark luxury palette */
+    --ink:#0a0c0f;       /* base near-black */
+    --ink2:#101317;      /* alt section */
+    --ink3:#161a20;      /* card / raised */
+    --paper:#0a0c0f;     /* (legacy alias -> dark) */
+    --paper2:#101317;    /* (legacy alias -> dark alt) */
+    --gold:#c9a24b; --gold-soft:#e0c481;
+    --text:#ece9e2;      /* warm off-white body */
+    --muted:#9a968c; --muted-d:#8f95a0;
+    --line:#23272e; --line-d:#23272e;
     --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   html{scroll-behavior:smooth;}
-  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
   .serif{font-family:var(--serif);}
@@ -72,34 +80,35 @@
   .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500;}
   .section-title{font-family:var(--serif);font-size:44px;font-weight:500;line-height:1.15;margin-bottom:22px;}
   .section-title em{font-style:italic;color:var(--gold);}
-  .lead{font-size:18px;color:var(--muted);max-width:660px;margin:0 auto;font-weight:300;}
+  .lead{font-size:18px;color:rgba(236,233,226,0.7);max-width:660px;margin:0 auto;font-weight:300;}
   .rule{width:54px;height:1px;background:var(--gold);margin:0 auto 26px;}
 
   /* ===== ABOUT ===== */
-  .about{background:var(--paper2);}
+  .about{background:var(--ink2);}
   .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;margin-top:20px;}
   .about-copy .eyebrow{text-align:left;}
   .about-copy .rule{margin:0 0 26px;}
-  .about-copy h2{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.15;margin-bottom:24px;}
-  .about-copy h2 em{font-style:italic;color:var(--gold);}
-  .about-copy p{color:#4c4a44;font-size:16.5px;margin-bottom:18px;}
-  .about-copy p strong{font-weight:600;color:var(--ink);}
+  .about-copy h2{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1.15;margin-bottom:24px;color:#fff;}
+  .about-copy h2 em{font-style:italic;color:var(--gold-soft);}
+  .about-copy p{color:rgba(236,233,226,0.72);font-size:16.5px;margin-bottom:18px;}
+  .about-copy p strong{font-weight:500;color:#fff;}
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:4px;padding:34px 28px;}
+  .stat{background:var(--ink3);border:1px solid var(--line);border-radius:4px;padding:34px 28px;transition:border-color .3s,transform .3s;}
+  .stat:hover{border-color:var(--gold);transform:translateY(-3px);}
   .stat .big{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:10px;}
   .stat .lbl{font-size:13.5px;color:var(--muted);letter-spacing:.3px;}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:40px;}}
 
   /* ===== SERVICES ===== */
   .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);margin-top:70px;border:1px solid var(--line);}
-  .svc{background:var(--paper);padding:46px 34px;transition:background .3s,transform .3s;}
-  .svc:hover{background:#fff;transform:translateY(-4px);}
+  .svc{background:var(--ink);padding:46px 34px;transition:background .3s,transform .3s;}
+  .svc:hover{background:var(--ink3);transform:translateY(-4px);}
   .svc .n{font-family:var(--serif);font-size:30px;color:var(--gold);font-weight:600;margin-bottom:18px;}
-  .svc h3{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:12px;}
-  .svc p{font-size:15px;color:var(--muted);font-weight:300;}
+  .svc h3{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:12px;color:#fff;}
+  .svc p{font-size:15px;color:rgba(236,233,226,0.65);font-weight:300;}
 
-  /* ===== TRUST (dark) ===== */
-  .trust{background:var(--ink);color:#fff;}
+  /* ===== TRUST ===== */
+  .trust{background:var(--ink2);color:#fff;}
   .trust .section-title em{color:var(--gold-soft);}
   .trust .lead{color:rgba(255,255,255,0.72);}
   .pots{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:860px;margin:64px auto 0;}
@@ -111,12 +120,13 @@
   .pot strong{color:var(--gold-soft);font-weight:500;}
   .keys{text-align:center;margin-top:52px;font-family:var(--serif);font-size:28px;font-style:italic;color:var(--gold-soft);}
 
-  /* ===== HOW (paper) ===== */
+  /* ===== HOW ===== */
+  #how{background:var(--ink);}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px;margin-top:70px;}
   .step{text-align:center;}
   .step .sn{font-family:var(--serif);font-size:40px;color:var(--gold);font-weight:600;line-height:1;margin-bottom:18px;}
-  .step h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;}
-  .step p{font-size:14.5px;color:var(--muted);font-weight:300;}
+  .step h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;color:#fff;}
+  .step p{font-size:14.5px;color:rgba(236,233,226,0.65);font-weight:300;}
 
   /* ===== PRICING (dark, not green) ===== */
   .pricing{background:var(--ink2);color:#fff;}
@@ -140,7 +150,8 @@
   @media(max-width:820px){.plans{grid-template-columns:1fr;}.pots{grid-template-columns:1fr;}}
 
   /* ===== CONTACT ===== */
-  .contact{background:var(--paper2);}
+  .contact{background:var(--ink2);}
+  .contact .section-title{color:#fff;}
 
   /* ===== FOOTER ===== */
   footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:56px 0;text-align:center;font-size:13px;font-weight:300;letter-spacing:0.3px;}
@@ -209,7 +220,7 @@
     <div class="reveal">
       <div class="rule"></div>
       <div class="eyebrow">What We Do</div>
-      <h2 class="section-title">Every part of your advertising, <em>handled.</em></h2>
+      <h2 class="section-title" style="color:#fff;">Every part of your advertising, <em>handled.</em></h2>
       <p class="lead">From the first strategy call to the leads landing in your inbox, we own the entire process — so you can stay focused on running your business.</p>
     </div>
     <div class="grid4">
@@ -252,7 +263,7 @@
     <div class="reveal">
       <div class="rule"></div>
       <div class="eyebrow">How It Works</div>
-      <h2 class="section-title">Live in days, <em>not weeks.</em></h2>
+      <h2 class="section-title" style="color:#fff;">Live in days, <em>not weeks.</em></h2>
       <p class="lead">A simple, transparent path from first hello to your first leads.</p>
     </div>
     <div class="steps">
