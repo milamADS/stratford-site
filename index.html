@@ -70,6 +70,8 @@
   .btn-gold:hover{background:var(--gold-soft);transform:translateY(-2px);}
   .btn-line{border:1px solid rgba(255,255,255,0.5);color:#fff;}
   .btn-line:hover{background:rgba(255,255,255,0.1);border-color:#fff;}
+  .btn-ghost{display:inline-flex;align-items:center;padding:16px 8px;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,0.72);border-bottom:1px solid transparent;transition:color .25s,border-color .25s;}
+  .btn-ghost:hover{color:var(--gold-soft);border-color:var(--gold-soft);}
   .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:5;color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:3px;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
   @media(max-width:820px){.hero h1{font-size:42px;}.hero p{font-size:17px;}.scroll-cue{display:none;}}
@@ -181,11 +183,11 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="kicker reveal in">Meta &amp; Facebook Advertising</div>
-      <h1 class="reveal in d1">Advertising built for businesses that <em>mean to grow.</em></h1>
+      <h1 class="reveal in d1">Advertising&nbsp;built for<br>businesses&nbsp;that <em>mean&nbsp;to&nbsp;grow.</em></h1>
       <p class="reveal in d2">We design, run, and refine Meta ad campaigns that bring you customers — without you ever touching Ads Manager, and without us ever touching your budget.</p>
       <div class="btnrow reveal in d3">
         <a href="#pricing" class="btn btn-gold">Begin Your Trial Month</a>
-        <a href="#trust" class="btn btn-line">How We Handle Your Money</a>
+        <a href="#trust" class="btn-ghost">How we handle your money&nbsp;&rsaquo;</a>
       </div>
     </div>
   </div>
