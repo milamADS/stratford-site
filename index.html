@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- build 20260926142610 -->
+<!DOCTYPE html><!-- build 20261010131200 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
 <title>Stratford Advertisements — Meta Advertising for Businesses That Mean to Grow</title>
 <meta name="description" content="Stratford Advertisements builds, runs, and optimizes Meta ad campaigns for growing businesses. We never touch your ad budget — it goes straight from your card to Facebook. Begin with a no-lock trial month.">
 <meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230a0c0f'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='64' font-weight='600' fill='%23c9a24b' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="Stratford Advertisements — Meta Advertising for Businesses That Mean to Grow">
 <meta property="og:description" content="We build and run Meta ad campaigns that bring you customers. We never touch your ad budget. Begin with a no-lock trial month.">
 <meta property="og:type" content="website">
@@ -30,7 +31,7 @@
     --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   html{scroll-behavior:smooth;}
-  body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
   .serif{font-family:var(--serif);}
@@ -53,13 +54,15 @@
   .navlinks a:hover{color:var(--gold-soft);}
   .navlinks .cta{border:1px solid rgba(255,255,255,0.45);padding:11px 22px;border-radius:2px;color:#fff;}
   .navlinks .cta:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);}
-  @media(max-width:820px){.navlinks{gap:16px;}.navlinks a:not(.cta){display:none;}}
+  @media(max-width:820px){.navlinks{gap:10px;}.navlinks a:not(.cta){display:none;}.navlinks .cta{padding:9px 16px;font-size:11px;letter-spacing:1.2px;}.brand{font-size:20px;}.wrap{padding:0 20px;}nav{padding:18px 0;}}
+  @media(max-width:380px){.navlinks .cta{padding:8px 12px;font-size:10px;}.brand{font-size:18px;}}
 
   /* ===== HERO ===== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:url('assets/hero-bg.jpg') center/cover no-repeat;background-attachment:fixed;}
   @media(max-width:820px){.hero{background-attachment:scroll;}}
   .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,8,10,0.82) 0%,rgba(6,8,10,0.5) 55%,rgba(6,8,10,0.28) 100%);}
   .hero-inner{position:relative;z-index:5;max-width:720px;color:#fff;padding:120px 0 60px;}
+  .hero p{text-shadow:0 1px 20px rgba(0,0,0,0.5);}
   .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:26px;font-weight:400;}
   .hero h1{font-family:var(--serif);font-size:66px;line-height:1.05;font-weight:500;margin-bottom:28px;letter-spacing:0.5px;}
   .hero h1 em{font-style:italic;color:var(--gold-soft);}
@@ -74,10 +77,12 @@
   .btn-ghost:hover{color:var(--gold-soft);border-color:var(--gold-soft);}
   .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:5;color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:3px;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
-  @media(max-width:820px){.hero h1{font-size:42px;}.hero p{font-size:17px;}.scroll-cue{display:none;}}
+  @media(max-width:820px){.hero h1{font-size:40px;}.hero p{font-size:16.5px;}.scroll-cue{display:none;}.hero-inner{padding:100px 0 40px;}}
+  @media(max-width:460px){.hero h1{font-size:33px;}.btnrow{gap:12px;}.btn{padding:14px 24px;font-size:12px;}}
 
   /* ===== SECTION FRAME ===== */
   section{padding:120px 0;}
+  @media(max-width:820px){section{padding:72px 0;}.section-title{font-size:34px;}.about-copy h2{font-size:32px;}.hero p{max-width:100%;}}
   .center{text-align:center;}
   .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500;}
   .section-title{font-family:var(--serif);font-size:44px;font-weight:500;line-height:1.15;margin-bottom:22px;}
@@ -188,11 +193,11 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="kicker reveal in">Meta &amp; Facebook Advertising</div>
-      <h1 class="reveal in d1">Advertising&nbsp;built for<br>businesses&nbsp;that <em>mean&nbsp;to&nbsp;grow.</em></h1>
+      <h1 class="reveal in d1">Advertising built for<br>businesses that <em>mean to grow.</em></h1>
       <p class="reveal in d2">We design, run, and refine Meta ad campaigns that bring you customers — without you ever touching Ads Manager, and without us ever touching your budget.</p>
       <div class="btnrow reveal in d3">
         <a href="#pricing" class="btn btn-gold">Begin Your Trial Month</a>
-        <a href="#trust" class="btn-ghost">How we handle your money&nbsp;&rsaquo;</a>
+        <a href="#trust" class="btn-ghost">How we handle your money &rsaquo;</a>
       </div>
     </div>
   </div>
@@ -261,6 +266,7 @@
       </div>
     </div>
     <div class="keys reveal d2">"Keys, not the wallet."</div>
+    <p class="reveal d3" style="text-align:center;margin-top:22px;font-size:14.5px;color:rgba(255,255,255,0.6);max-width:560px;margin-left:auto;margin-right:auto;font-weight:300;">You hold the keys to your account; we never hold your wallet. Revoke our access in one click, any time.</p>
   </div>
 </section>
 
@@ -353,7 +359,10 @@
       <div class="eyebrow">Get Started</div>
       <h2 class="section-title">Let's grow <em>your business.</em></h2>
       <p class="lead" style="margin-bottom:36px;">Not ready to start the trial? Tell us about your business and we'll put together a plan. No pressure, no commitment.</p>
-      <a href="mailto:ethan@stratfordads.com?subject=Interested%20in%20Stratford%20Advertisements" class="btn btn-gold">Email Us — ethan@stratfordads.com</a>
+      <div class="btnrow" style="justify-content:center;">
+        <a href="mailto:ethan@stratfordads.com?subject=Interested%20in%20Stratford%20Advertisements" class="btn btn-gold">Email Us — ethan@stratfordads.com</a>
+        <a href="#pricing" class="btn btn-line">Or Start Your Trial</a>
+      </div>
     </div>
   </div>
 </section>
