@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Command Console — Radiance Med Spa · Stratford</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08080a;--bg2:#0d0d11;--panel:#131319;--panel2:#191921;--line:#262630;--line2:#30303c;
+  --gold:#c9a24b;--gold-soft:#dcc07e;--gold-bright:#f0d79a;--txt:#f4f2ec;--muted:#9995 8c;--muted:#999288;
+  --green:#5fcf8e;--blue:#7fa8d8;--amber:#e3b765;--rose:#c98a7a;
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(1200px 700px at 70% -10%,#16130c 0%,var(--bg) 55%);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+/* ---- SIDEBAR ---- */
+.side{background:linear-gradient(180deg,#0c0c10,#0a0a0d);border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;padding:4px 10px 18px;letter-spacing:.3px}
+.logo .d{color:var(--gold)}
+.navitem{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:var(--muted);font-size:14px;font-weight:500;cursor:pointer;transition:.15s;border:1px solid transparent}
+.navitem:hover{color:var(--txt);background:#15151c}
+.navitem.active{color:var(--gold-bright);background:linear-gradient(135deg,#1a160d,#15151c);border-color:#3a2f16}
+.navitem .ic{width:18px;text-align:center;font-size:15px;opacity:.9}
+.side .spacer{flex:1}
+.side .managed{margin:0 6px;padding:13px;border:1px solid var(--line);border-radius:12px;background:#101014}
+.side .managed .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);margin-right:7px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.side .managed .t{font-size:12px;color:var(--green);font-weight:600}
+.side .managed .s{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+/* ---- MAIN ---- */
+.main{padding:26px 34px 60px;max-width:1100px}
+.head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+.head .biz{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700}
+.head .tag{color:var(--muted);font-size:13.5px;margin-top:2px}
+.head .pill{border:1px solid var(--gold);color:var(--gold);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:30px;background:rgba(201,162,75,.07)}
+/* bell */
+.bellwrap{position:relative}
+.bell{width:42px;height:42px;border-radius:12px;border:1px solid var(--line2);background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;transition:.15s}
+.bell:hover{border-color:var(--gold)}
+.bell .count{position:absolute;top:-6px;right:-6px;background:var(--rose);color:#fff;font-size:10px;font-weight:700;min-width:18px;height:18px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:26px 0 30px}
+.kpi{background:linear-gradient(160deg,var(--panel),#101016);border:1px solid var(--line);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 120px at 100% 0,rgba(201,162,75,.08),transparent);pointer-events:none}
+.kpi .l{color:var(--muted);font-size:11px;letter-spacing:1.3px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.kpi .v{font-family:'Cormorant Garamond',serif;font-size:33px;font-weight:700;margin-top:7px;letter-spacing:.5px}
+.kpi .sub{font-size:12px;margin-top:3px;color:var(--green)}
+.kpi.accent .v{color:var(--gold-bright)}
+/* section */
+.sec-h{display:flex;justify-content:space-between;align-items:center;margin:34px 0 15px}
+.sec-h h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600}
+.sec-h .hint{color:var(--muted);font-size:12.5px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-size:12.5px;padding:7px 15px;border-radius:30px;cursor:pointer;transition:.15s;font-weight:500}
+.chip:hover{color:var(--txt);border-color:var(--line2)}
+.chip.active{background:linear-gradient(135deg,var(--gold),#b8923f);color:#17130a;border-color:var(--gold);font-weight:600}
+/* table card */
+.card{background:linear-gradient(170deg,var(--panel),#0f0f14);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;color:var(--muted);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;padding:14px 18px;border-bottom:1px solid var(--line);background:#121218}
+td{padding:15px 18px;border-bottom:1px solid #191920;font-size:14px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{transition:background .15s}
+tbody tr:hover td{background:#16161d}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2a2a34,#1d1d25);color:var(--gold-soft);font-weight:600;font-size:13px;display:inline-flex;align-items:center;justify-content:center;margin-right:11px;border:1px solid var(--line2);vertical-align:middle}
+.nm{font-weight:500}
+.contact{color:var(--muted);font-size:12px;line-height:1.5}
+.svc{color:var(--gold-soft);font-size:13.5px}
+.when{color:var(--muted);font-size:12.5px}
+.val{font-weight:600;color:var(--txt)}
+.st{font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:5px 11px;border-radius:30px;border:1px solid;white-space:nowrap;font-weight:600}
+.st-new{color:var(--amber);border-color:rgba(227,183,101,.5);background:rgba(227,183,101,.08)}
+.st-contacted{color:var(--blue);border-color:rgba(127,168,216,.5);background:rgba(127,168,216,.08)}
+.st-booked{color:var(--green);border-color:rgba(95,207,142,.5);background:rgba(95,207,142,.08)}
+.st-won{color:var(--gold-bright);border-color:var(--gold);background:rgba(201,162,75,.14)}
+/* toast notifications */
+.toasts{position:fixed;top:20px;right:20px;display:flex;flex-direction:column;gap:12px;z-index:100;max-width:340px}
+.toast{background:linear-gradient(135deg,#17150e,#15151c);border:1px solid var(--gold);border-radius:14px;padding:15px 17px;box-shadow:0 14px 40px rgba(0,0,0,.5);display:flex;gap:12px;align-items:flex-start;transform:translateX(400px);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}
+.toast.show{transform:translateX(0);opacity:1}
+.toast .emo{font-size:22px}
+.toast .tt{font-size:13.5px;font-weight:600;color:var(--gold-bright)}
+.toast .tb{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.toast .ch{color:var(--green);font-size:11px;margin-top:5px}
+/* automations panel */
+.autos{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:6px}
+.auto{background:linear-gradient(160deg,var(--panel),#101016);border:1px solid var(--line);border-radius:16px;padding:20px}
+.auto .ico{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#1c1710,#15151c);border:1px solid #352b16;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:13px}
+.auto h3{font-size:15px;font-weight:600;margin-bottom:5px}
+.auto p{color:var(--muted);font-size:13px;line-height:1.55}
+.auto .status{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--green);font-weight:600}
+.auto .status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.auto .stat{margin-top:11px;font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-soft)}
+.auto .statl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+/* footer trust */
+.foot{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.7}
+.foot b{color:var(--gold-soft)}
+.view{display:none}.view.on{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.autos{grid-template-columns:1fr}.hide-sm{display:none}.main{padding:20px}}
+</style></head><body>
+<div class="toasts" id="toasts"></div>
+<div class="app">
+  <aside class="side">
+    <div class="logo">Stratford<span class="d">.</span></div>
+    <div class="navitem active" data-v="leads"><span class="ic">◈</span> Leads &amp; Bookings</div>
+    <div class="navitem" data-v="customers"><span class="ic">◇</span> Customer Database</div>
+    <div class="navitem" data-v="autos"><span class="ic">⚡</span> Automations</div>
+    <div class="spacer"></div>
+    <div class="managed"><div class="t"><span class="dot"></span>Live &amp; Managed</div><div class="s">Stratford runs this for you 24/7. Nothing here needs your setup.</div></div>
+  </aside>
+  <main class="main">
+    <div class="head">
+      <div>
+        <div class="biz" id="biz">Radiance Med Spa</div>
+        <div class="tag">Command Growth System · <span id="today"></span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="pill">Command</div>
+        <div class="bellwrap"><div class="bell" id="bell">🔔<span class="count" id="bellcount">0</span></div></div>
+      </div>
+    </div>
+
+    <!-- LEADS VIEW -->
+    <div class="view on" id="v-leads">
+      <div class="kpis" id="kpis"></div>
+      <div class="sec-h"><h2>Leads &amp; Bookings</h2><div class="hint">Updates live as your ads bring people in</div></div>
+      <div class="filters" id="filters"></div>
+      <div class="card"><table><thead><tr><th>Lead</th><th class="hide-sm">Contact</th><th>Interested In</th><th class="hide-sm">Came In</th><th>Est. Value</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <div class="foot"><b>The Stratford promise:</b> You pay Meta directly from your own account — we never hold your ad budget. You own your account, your data, and every lead here. Always.</div>
+    </div>
+
+    <!-- CUSTOMERS VIEW -->
+    <div class="view" id="v-customers">
+      <div class="sec-h"><h2>Customer Database</h2><div class="hint">Every booked client, saved automatically — no manual entry</div></div>
+      <div class="card"><table><thead><tr><th>Customer</th><th class="hide-sm">Contact</th><th>Last Visit</th><th class="hide-sm">Lifetime Value</th><th>Next Action</th></tr></thead><tbody id="custrows"></tbody></table></div>
+      <div class="foot">Every person who books through your ads is saved here automatically. <b>Your customer list builds itself</b> — no front-desk data entry, ever.</div>
+    </div>
+
+    <!-- AUTOMATIONS VIEW -->
+    <div class="view" id="v-autos">
+      <div class="sec-h"><h2>Automations Running For You</h2><div class="hint">All active · zero effort from your team</div></div>
+      <div class="autos" id="autos"></div>
+      <div class="foot">These run automatically in the background. <b>You never lift a finger</b> — we build, run, and tune them for you.</div>
+    </div>
+  </main>
+</div>
+<script>
+const BUSINESS="Radiance Med Spa";
+document.getElementById('biz').textContent=BUSINESS;
+document.title="Command Console — "+BUSINESS;
+document.getElementById('today').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+function initials(f,l){return (f[0]||'')+(l[0]||'');}
+function money(n){return '$'+n.toLocaleString();}
+
+let LEADS=[
+ {first:"Jessica",last:"Monroe",phone:"(512) 555-0142",email:"jess.m@email.com",service:"Botox / Injectables",came:"2h ago",value:650,status:"booked"},
+ {first:"Andre",last:"Pierce",phone:"(512) 555-0199",email:"andrep@email.com",service:"Laser Treatment",came:"5h ago",value:1200,status:"new"},
+ {first:"Dana",last:"Kim",phone:"(512) 555-0121",email:"dana.k@email.com",service:"Facial / Skincare",came:"Yesterday",value:400,status:"contacted"},
+ {first:"Marcus",last:"Tran",phone:"(512) 555-0188",email:"mtran@email.com",service:"Body Contouring",came:"Yesterday",value:2400,status:"won"},
+ {first:"Priya",last:"Shah",phone:"(512) 555-0170",email:"priya.s@email.com",service:"Botox / Injectables",came:"2d ago",value:550,status:"booked"},
+ {first:"Chloe",last:"Rivera",phone:"(512) 555-0133",email:"chloer@email.com",service:"Facial / Skincare",came:"3d ago",value:350,status:"won"},
+ {first:"Brandon",last:"Lee",phone:"(512) 555-0155",email:"blee@email.com",service:"Laser Treatment",came:"3d ago",value:900,status:"contacted"},
+ {first:"Sofia",last:"Nguyen",phone:"(512) 555-0166",email:"sofian@email.com",service:"Body Contouring",came:"4d ago",value:2100,status:"booked"},
+];
+const CUSTOMERS=[
+ {first:"Marcus",last:"Tran",phone:"(512) 555-0188",email:"mtran@email.com",last:"2 days ago",ltv:4800,next:"Rebook reminder in 10 wks"},
+ {first:"Chloe",last:"Rivera",phone:"(512) 555-0133",email:"chloer@email.com",last:"3 days ago",ltv:1250,next:"Review request sent ✓"},
+ {first:"Elena",last:"Vasquez",phone:"(512) 555-0111",email:"elenav@email.com",last:"6 weeks ago",ltv:3200,next:"Win-back: due now"},
+ {first:"Grace",last:"Park",phone:"(512) 555-0102",email:"gracep@email.com",last:"3 months ago",ltv:5600,next:"Win-back sent ✓"},
+];
+const AUTOS=[
+ {ico:"⚡",h:"Instant Lead Response",p:"The second a lead comes in from your ads, they get a personalized text + email — usually within seconds.",stat:"3.1s",statl:"Avg response time"},
+ {ico:"📅",h:"Auto-Booking",p:"Interested leads pick a time that drops straight onto your calendar. No phone tag, no missed callbacks.",stat:"21",statl:"Booked this month"},
+ {ico:"🔔",h:"Appointment Reminders",p:"Every booked client gets an automatic reminder the day before — cutting no-shows dramatically.",stat:"0",statl:"No-shows last 30d"},
+ {ico:"💌",h:"Win-Back Campaigns",p:"Past clients who haven't returned get a gentle 'ready to rebook?' nudge, automatically.",stat:"4",statl:"Re-booked this month"},
+ {ico:"⭐",h:"Review Requests",p:"After each visit, happy clients are auto-asked for a Google review — building your reputation on autopilot.",stat:"17",statl:"New 5★ reviews"},
+ {ico:"📊",h:"Weekly Reporting",p:"You get a clear summary of leads, bookings, and revenue every week — no logging in required.",stat:"Mon",statl:"Delivered weekly"},
+];
+
+let filter="all";
+const el=i=>document.getElementById(i);
+function renderKpis(){
+ const total=LEADS.length;
+ const booked=LEADS.filter(l=>l.status==="booked"||l.status==="won").length;
+ const wonRev=LEADS.filter(l=>l.status==="won").reduce((s,l)=>s+l.value,0);
+ const pipeline=LEADS.filter(l=>l.status!=="won").reduce((s,l)=>s+l.value,0);
+ el("kpis").innerHTML=[
+  {l:"Total Leads",v:total,sub:"+3 this week"},
+  {l:"Booked",v:booked,sub:"appointments set"},
+  {l:"Revenue Won",v:money(wonRev),sub:"closed this month",accent:true},
+  {l:"Pipeline Value",v:money(pipeline),sub:"in progress"}
+ ].map(k=>'<div class="kpi '+(k.accent?'accent':'')+'"><div class="l">'+k.l+'</div><div class="v">'+k.v+'</div><div class="sub">'+k.sub+'</div></div>').join("");
+}
+function renderRows(){
+ const counts={all:LEADS.length,new:LEADS.filter(l=>l.status==="new").length,contacted:LEADS.filter(l=>l.status==="contacted").length,booked:LEADS.filter(l=>l.status==="booked").length,won:LEADS.filter(l=>l.status==="won").length};
+ el("filters").innerHTML=[["all","All"],["new","New"],["contacted","Contacted"],["booked","Booked"],["won","Won"]].map(f=>'<div class="chip '+(filter===f[0]?"active":"")+'" data-f="'+f[0]+'">'+f[1]+' · '+counts[f[0]]+'</div>').join("");
+ const list=filter==="all"?LEADS:LEADS.filter(l=>l.status===filter);
+ el("rows").innerHTML=list.map(l=>'<tr><td><span class="avatar">'+initials(l.first,l.last)+'</span><span class="nm">'+l.first+' '+l.last+'</span></td>'+
+  '<td class="hide-sm contact">'+l.phone+'<br>'+l.email+'</td>'+
+  '<td class="svc">'+l.service+'</td>'+
+  '<td class="hide-sm when">'+l.came+'</td>'+
+  '<td class="val">'+money(l.value)+'</td>'+
+  '<td><span class="st st-'+l.status+'">'+l.status+'</span></td></tr>').join("");
+ document.querySelectorAll("#filters .chip").forEach(c=>c.onclick=()=>{filter=c.dataset.f;renderRows();});
+}
+function renderCust(){
+ el("custrows").innerHTML=CUSTOMERS.map(c=>'<tr><td><span class="avatar">'+initials(c.first,c.last)+'</span><span class="nm">'+c.first+' '+c.last+'</span></td>'+
+  '<td class="hide-sm contact">'+c.phone+'<br>'+c.email+'</td>'+
+  '<td class="when">'+c.last+'</td>'+
+  '<td class="hide-sm val">'+money(c.ltv)+'</td>'+
+  '<td class="svc">'+c.next+'</td></tr>').join("");
+}
+function renderAutos(){
+ el("autos").innerHTML=AUTOS.map(a=>'<div class="auto"><div class="ico">'+a.ico+'</div><h3>'+a.h+'</h3><p>'+a.p+'</p><div class="stat">'+a.stat+'</div><div class="statl">'+a.statl+'</div><div class="status"><span class="dot"></span>Active</div></div>').join("");
+}
+// nav
+document.querySelectorAll(".navitem").forEach(n=>n.onclick=()=>{
+ document.querySelectorAll(".navitem").forEach(x=>x.classList.remove("active"));n.classList.add("active");
+ document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
+ el("v-"+n.dataset.v).classList.add("on");
+});
+// ---- live notification simulation ----
+let bellCount=0;
+function toast(emo,tt,tb,ch){
+ const t=document.createElement("div");t.className="toast";
+ t.innerHTML='<div class="emo">'+emo+'</div><div><div class="tt">'+tt+'</div><div class="tb">'+tb+'</div>'+(ch?'<div class="ch">'+ch+'</div>':'')+'</div>';
+ el("toasts").appendChild(t);requestAnimationFrame(()=>t.classList.add("show"));
+ bellCount++;el("bellcount").textContent=bellCount;
+ setTimeout(()=>{t.classList.remove("show");setTimeout(()=>t.remove(),500);},6500);
+}
+const incoming=[
+ {delay:2500,lead:{first:"Olivia",last:"Bennett",phone:"(512) 555-0147",email:"oliviab@email.com",service:"Botox / Injectables",came:"Just now",value:700,status:"new"},emo:"✨",tt:"New lead from your ad!",tb:"Olivia Bennett — Botox / Injectables. Auto follow-up sent.",ch:"● Text + email delivered in 3s"},
+ {delay:7000,lead:null,emo:"🎉",tt:"New booking confirmed!",tb:"Jessica Monroe booked Botox for Thursday 2:00 PM",ch:"● Added to your calendar + customer saved"},
+ {delay:12000,lead:{first:"Daniel",last:"Cho",phone:"(512) 555-0190",email:"danielc@email.com",service:"Laser Treatment",came:"Just now",value:1100,status:"new"},emo:"✨",tt:"New lead from your ad!",tb:"Daniel Cho — Laser Treatment. Auto follow-up sent.",ch:"● Text + email delivered in 2s"},
+];
+incoming.forEach(ev=>setTimeout(()=>{
+ if(ev.lead){LEADS.unshift(ev.lead);renderKpis();renderRows();}
+ toast(ev.emo,ev.tt,ev.tb,ev.ch);
+},ev.delay));
+el("bell").onclick=()=>{bellCount=0;el("bellcount").textContent=0;};
+
+renderKpis();renderRows();renderCust();renderAutos();
+</script></body></html>

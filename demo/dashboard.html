@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Leads — Radiance Med Spa · Command</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0a0c;--panel:#131318;--panel2:#1a1a21;--line:#26262f;--gold:#c9a24b;--gold-soft:#d8bd7a;--txt:#f3f1ea;--muted:#9a968c;--green:#5fcf8e;--blue:#7fa8d8;--amber:#e0b96a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:50px}
+.topbar{border-bottom:1px solid var(--line);padding:18px 0;background:linear-gradient(180deg,#101014,transparent)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.topbar .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700}.logo .a{color:var(--gold)}
+.badge{border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-left:8px}
+.who{color:var(--muted);font-size:13px}.who b{color:var(--gold-soft);font-family:'Cormorant Garamond',serif;font-size:16px}
+h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin:30px 0 4px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.kpi .l{color:var(--muted);font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+.kpi .v{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;margin-top:4px}
+.bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.chip{background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-size:12.5px;padding:7px 14px;border-radius:20px;cursor:pointer;transition:.15s}
+.chip:hover{color:var(--txt)}.chip.active{background:var(--gold);color:#1a1512;border-color:var(--gold);font-weight:600}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;color:var(--muted);font-size:11px;letter-spacing:1.3px;text-transform:uppercase;padding:13px 16px;border-bottom:1px solid var(--line);background:#15151b}
+td{padding:14px 16px;border-bottom:1px solid #1c1c24;font-size:14px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#17171e}
+.nm{font-weight:500}.contact{color:var(--muted);font-size:12.5px}
+.svc{color:var(--gold-soft)}
+.st{font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;padding:4px 11px;border-radius:20px;border:1px solid;white-space:nowrap}
+.st-new{color:var(--amber);border-color:var(--amber)}
+.st-contacted{color:var(--blue);border-color:var(--blue)}
+.st-booked{color:var(--green);border-color:var(--green)}
+.st-won{color:var(--gold);border-color:var(--gold);background:rgba(201,162,75,.12)}
+.empty{text-align:center;color:var(--muted);padding:40px;font-size:14px}
+.note{color:var(--muted);font-size:12px;text-align:center;margin-top:16px}
+.managed{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-size:12px;border:1px solid rgba(95,207,142,.3);border-radius:20px;padding:4px 12px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.hide-sm{display:none}}
+</style></head><body>
+<div class="topbar"><div class="wrap row">
+  <div class="logo">Stratford<span class="a">.</span> <span class="badge">Command</span></div>
+  <div class="who">Managed for <b id="biz">Radiance Med Spa</b></div>
+</div></div>
+<div class="wrap">
+  <h1>Your Leads &amp; Bookings</h1>
+  <div class="sub">Every lead your ads bring in — captured, followed up, and tracked automatically. <span class="managed">● Live · managed by Stratford</span></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="bar" id="filters"></div>
+  <div class="panel">
+    <table><thead><tr><th>Lead</th><th class="hide-sm">Contact</th><th>Interested In</th><th class="hide-sm">Came In</th><th>Est. Value</th><th>Status</th></tr></thead>
+    <tbody id="rows"></tbody></table>
+  </div>
+  <div class="note">Updated automatically as new leads arrive. Questions about a lead? Just reply to your Stratford thread — we're on it.</div>
+</div>
+<script>
+/* ===== LEAD DATABASE =====
+   In production this loads from the live leads database the Command system writes to.
+   Each lead the ad captures -> instant follow-up fires -> row appears here automatically. */
+const BUSINESS="Radiance Med Spa";
+const LEADS=[
+ {first:"Jessica",last:"Monroe",phone:"(512) 555-0142",email:"jess.m@email.com",service:"Botox / Injectables",came:"2h ago",value:650,status:"booked"},
+ {first:"Andre",last:"Pierce",phone:"(512) 555-0199",email:"andrep@email.com",service:"Laser Treatment",came:"5h ago",value:1200,status:"new"},
+ {first:"Dana",last:"Kim",phone:"(512) 555-0121",email:"dana.k@email.com",service:"Facial / Skincare",came:"Yesterday",value:400,status:"contacted"},
+ {first:"Marcus",last:"Tran",phone:"(512) 555-0188",email:"mtran@email.com",service:"Body Contouring",came:"Yesterday",value:2400,status:"won"},
+ {first:"Priya",last:"Shah",phone:"(512) 555-0170",email:"priya.s@email.com",service:"Botox / Injectables",came:"2d ago",value:550,status:"booked"},
+ {first:"Chloe",last:"Rivera",phone:"(512) 555-0133",email:"chloer@email.com",service:"Facial / Skincare",came:"3d ago",value:350,status:"won"},
+ {first:"Brandon",last:"Lee",phone:"(512) 555-0155",email:"blee@email.com",service:"Laser Treatment",came:"3d ago",value:900,status:"contacted"},
+ {first:"Sofia",last:"Nguyen",phone:"(512) 555-0166",email:"sofian@email.com",service:"Body Contouring",came:"4d ago",value:2100,status:"booked"},
+];
+let filter="all";
+const el=i=>document.getElementById(i);
+el("biz").textContent=BUSINESS;document.title="Your Leads — "+BUSINESS+" · Command";
+function money(n){return "$"+n.toLocaleString();}
+function render(){
+  const total=LEADS.length;
+  const booked=LEADS.filter(l=>l.status==="booked"||l.status==="won").length;
+  const won=LEADS.filter(l=>l.status==="won").length;
+  const pipeline=LEADS.filter(l=>l.status!=="won").reduce((s,l)=>s+l.value,0);
+  const wonRev=LEADS.filter(l=>l.status==="won").reduce((s,l)=>s+l.value,0);
+  el("kpis").innerHTML=[
+    {l:"Total Leads",v:total},{l:"Booked",v:booked},
+    {l:"Revenue Won",v:money(wonRev)},{l:"Pipeline Value",v:money(pipeline)}
+  ].map(k=>'<div class="kpi"><div class="l">'+k.l+'</div><div class="v">'+k.v+'</div></div>').join("");
+  const counts={all:total,new:LEADS.filter(l=>l.status==="new").length,contacted:LEADS.filter(l=>l.status==="contacted").length,booked:LEADS.filter(l=>l.status==="booked").length,won:LEADS.filter(l=>l.status==="won").length};
+  el("filters").innerHTML=[["all","All"],["new","New"],["contacted","Contacted"],["booked","Booked"],["won","Won"]].map(f=>'<div class="chip '+(filter===f[0]?"active":"")+'" data-f="'+f[0]+'">'+f[1]+' ('+counts[f[0]]+')</div>').join("");
+  const list=filter==="all"?LEADS:LEADS.filter(l=>l.status===filter);
+  el("rows").innerHTML=list.length?list.map(l=>'<tr>'+
+    '<td><div class="nm">'+l.first+' '+l.last+'</div></td>'+
+    '<td class="hide-sm contact">'+l.phone+'<br>'+l.email+'</td>'+
+    '<td class="svc">'+l.service+'</td>'+
+    '<td class="hide-sm contact">'+l.came+'</td>'+
+    '<td>'+money(l.value)+'</td>'+
+    '<td><span class="st st-'+l.status+'">'+l.status+'</span></td></tr>').join(""):'<tr><td colspan="6" class="empty">No leads in this view.</td></tr>';
+  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{filter=c.dataset.f;render();});
+}
+render();
+</script></body></html>
