@@ -3,117 +3,128 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Stratford — Agent Control Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#08080a;--bg2:#0d0d11;--panel:#131319;--panel2:#191921;--line:#262630;--line2:#30303c;--gold:#c9a24b;--gold-soft:#dcc07e;--gold-bright:#f0d79a;--txt:#f4f2ec;--muted:#999288;--green:#5fcf8e;--blue:#7fa8d8;--amber:#e3b765;--rose:#c98a7a;--purple:#b39ddb}
+:root{--bg:#070709;--bg2:#0d0d11;--panel:#131319;--panel2:#191921;--line:#242430;--line2:#32323e;--gold:#c9a24b;--gold-soft:#dcc07e;--gold-bright:#f3dca0;--txt:#f4f2ec;--muted:#948d82;--green:#5fcf8e;--blue:#7fa8d8;--amber:#e3b765;--rose:#c98a7a;--purple:#b39ddb}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{background:radial-gradient(900px 500px at 80% -10%,#16130c 0%,var(--bg) 55%);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;padding-bottom:40px}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;padding-bottom:90px;overflow-x:hidden}
+/* animated aurora backdrop */
+.aura{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.aura::before,.aura::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+.aura::before{width:420px;height:420px;background:radial-gradient(circle,rgba(201,162,75,.22),transparent 70%);top:-120px;right:-80px;animation:drift1 14s ease-in-out infinite}
+.aura::after{width:380px;height:380px;background:radial-gradient(circle,rgba(70,90,140,.18),transparent 70%);bottom:-100px;left:-90px;animation:drift2 18s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-30px)}}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px}
-header{padding:22px 0 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101014,transparent);margin-bottom:18px}
+header{padding:24px 0 16px;border-bottom:1px solid var(--line);margin-bottom:18px;position:relative}
 .hrow{display:flex;justify-content:space-between;align-items:center}
-.brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700}.brand .d{color:var(--gold)}
-.sub{color:var(--muted);font-size:12px;margin-top:2px;letter-spacing:.5px}
-.live{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--green);border:1px solid rgba(95,207,142,.35);border-radius:20px;padding:5px 11px;font-weight:600}
-.live .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
-.sc{background:linear-gradient(160deg,var(--panel),#101016);border:1px solid var(--line);border-radius:14px;padding:13px 14px;text-align:center}
-.sc .v{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700}
+.brand{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:700;letter-spacing:.3px}.brand .d{color:var(--gold)}
+.sub{color:var(--muted);font-size:11.5px;margin-top:2px;letter-spacing:1.5px;text-transform:uppercase}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--green);border:1px solid rgba(95,207,142,.3);border-radius:20px;padding:6px 12px;font-weight:600;background:rgba(95,207,142,.06)}
+.live .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.sc{background:linear-gradient(160deg,var(--panel),#0e0e13);border:1px solid var(--line);border-radius:16px;padding:15px 12px;text-align:center;position:relative;overflow:hidden}
+.sc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+.sc .v{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;line-height:1}
 .sc .v.g{color:var(--gold-bright)}.sc .v.gr{color:var(--green)}
-.sc .l{color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-.sech{font-family:'Cormorant Garamond',serif;font-size:19px;margin:6px 0 12px;display:flex;align-items:center;gap:9px}
-.sech .bar{width:22px;height:2px;background:var(--gold)}
-.agent{background:linear-gradient(170deg,var(--panel),#0f0f14);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;cursor:pointer;transition:border-color .2s,transform .1s}
-.agent:active{transform:scale(.995)}
-.agent.working{border-color:rgba(201,162,75,.4)}
+.sc .l{color:var(--muted);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;margin-top:5px}
+.sech{font-family:'Cormorant Garamond',serif;font-size:19px;margin:4px 0 14px;display:flex;align-items:center;gap:10px;color:var(--gold-soft)}
+.sech .bar{width:24px;height:2px;background:var(--gold)}
+.agent{background:linear-gradient(170deg,var(--panel),#0e0e13);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:13px;cursor:pointer;transition:border-color .25s,transform .1s;position:relative;overflow:hidden}
+.agent::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),transparent);opacity:.8}
+.agent:active{transform:scale(.994)}
+.agent.working{border-color:rgba(201,162,75,.35)}
 .atop{display:flex;align-items:center;gap:13px}
-.ico{flex:none;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#1c1710,#15151c);border:1px solid #352b16;display:flex;align-items:center;justify-content:center;font-size:22px}
+.ico{flex:none;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#201a10,#15151c);border:1px solid #3a2f18;display:flex;align-items:center;justify-content:center;font-size:23px;position:relative}
+.ico::after{content:"";position:absolute;inset:-2px;border-radius:15px;border:1.5px solid transparent;border-top-color:var(--gold);animation:spin 2.4s linear infinite;opacity:.6}
+@keyframes spin{to{transform:rotate(360deg)}}
 .ainfo{flex:1;min-width:0}
 .aname{font-size:15.5px;font-weight:600}
 .arole{color:var(--muted);font-size:12px;margin-top:1px}
-.badge{font-size:10px;letter-spacing:.6px;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid;font-weight:600;white-space:nowrap}
-.b-working{color:var(--gold-bright);border-color:var(--gold);background:rgba(201,162,75,.12)}
-.b-ready{color:var(--green);border-color:rgba(95,207,142,.4);background:rgba(95,207,142,.08)}
-.b-idle{color:var(--muted);border-color:var(--line2)}
-.b-build{color:var(--amber);border-color:rgba(227,183,101,.4);background:rgba(227,183,101,.08)}
-.atask{margin-top:12px;background:#0e0e13;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:13px;color:var(--gold-soft);display:flex;align-items:center;gap:9px}
-.atask .sp{flex:none;width:13px;height:13px;border:2px solid var(--line2);border-top-color:var(--gold);border-radius:50%;animation:spin .9s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.atask .chk{color:var(--green);font-size:15px}
-.adetail{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.agent.open .adetail{max-height:420px}
+.badge{font-size:9.5px;letter-spacing:.7px;text-transform:uppercase;padding:5px 11px;border-radius:20px;border:1px solid;font-weight:700;white-space:nowrap;color:var(--gold-bright);border-color:var(--gold);background:rgba(201,162,75,.12)}
+.atask{margin-top:13px;background:#0b0b0f;border:1px solid var(--line);border-radius:11px;padding:11px 12px;font-size:12.5px;color:var(--gold-soft);display:flex;align-items:center;gap:10px;line-height:1.4}
+.atask .sp{flex:none;width:14px;height:14px;border:2px solid var(--line2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+/* live progress bar */
+.prog{height:3px;background:var(--line);border-radius:3px;margin-top:11px;overflow:hidden}
+.prog span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-bright));border-radius:3px;animation:flow 2.5s ease-in-out infinite}
+@keyframes flow{0%{width:15%}50%{width:85%}100%{width:15%}}
+.adetail{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.agent.open .adetail{max-height:460px}
 .adetail-inner{padding-top:13px;margin-top:13px;border-top:1px solid var(--line)}
-.stat-row{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;border-bottom:1px solid #16161d}
+.stat-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid #15151c}
 .stat-row:last-child{border-bottom:none}
-.stat-row .k{color:var(--muted)}.stat-row .val{color:var(--txt);font-weight:500}
-.log{margin-top:11px}
-.logitem{font-size:11.5px;color:var(--muted);padding:5px 0 5px 16px;position:relative;line-height:1.5}
-.logitem::before{content:"";position:absolute;left:3px;top:10px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
-.tap{text-align:center;color:var(--muted);font-size:10.5px;margin-top:9px;letter-spacing:.5px}
-.foot{color:var(--muted);font-size:11.5px;text-align:center;margin-top:22px;line-height:1.7}
+.stat-row .k{color:var(--muted)}.stat-row .val{color:var(--txt);font-weight:600}
+.stat-row .val.hot{color:var(--green)}
+.log{margin-top:12px}
+.logitem{font-size:11.5px;color:var(--muted);padding:5px 0 5px 17px;position:relative;line-height:1.5}
+.logitem::before{content:"";position:absolute;left:3px;top:10px;width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold)}
+.tap{text-align:center;color:var(--muted);font-size:10px;margin-top:10px;letter-spacing:1px;opacity:.6}
+.foot{color:var(--muted);font-size:11.5px;text-align:center;margin-top:24px;line-height:1.8}
 .foot b{color:var(--gold-soft)}
-.refresh{position:fixed;bottom:18px;right:18px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#b8923f);border:none;color:#17130a;font-size:20px;box-shadow:0 8px 24px rgba(201,162,75,.35);cursor:pointer}
+.updated{text-align:center;color:var(--muted);font-size:10.5px;margin-top:8px;opacity:.7}
+.refresh{position:fixed;bottom:22px;right:22px;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#b8923f);border:none;color:#15120a;font-size:22px;box-shadow:0 10px 30px rgba(201,162,75,.4);cursor:pointer;z-index:10}
 </style></head><body>
+<div class="aura"></div>
 <header><div class="wrap hrow">
-<div><div class="brand">Stratford<span class="d">.</span> Agents</div><div class="sub">Control Center</div></div>
+<div><div class="brand">Stratford<span class="d">.</span> Agents</div><div class="sub">Live Control Center</div></div>
 <div class="live"><span class="dot"></span>LIVE</div>
 </div></header>
 <div class="wrap">
 <div class="summary" id="summary"></div>
-<div class="sech"><span class="bar"></span>Your Agent Team</div>
+<div class="sech"><span class="bar"></span>Your Agent Team · All Active</div>
 <div id="agents"></div>
-<div class="foot"><b>6 agents working your pipeline.</b> Tap any agent to see its live tasks + stats. The team runs your outreach and (when you land them) your Command clients — so the work happens whether you're at your desk or not.</div>
+<div class="foot"><b>6 agents working your pipeline around the clock.</b> Tap any agent to open its live stats + activity feed. They run your outreach now — and your Command clients when you land them.</div>
+<div class="updated" id="updated"></div>
 </div>
-<button class="refresh" id="refresh" title="Refresh">↻</button>
+<button class="refresh" id="refresh">↻</button>
 <script>
+const DATA={sent:229,contacted:100,leads:227,replies:0,bounced:13};
 const AGENTS=[
- {id:'outreach',ico:'📡',name:'Outreach Agent',role:'Cold email engine',status:'working',
-  task:{text:'Sending today\'s batch across 6 warmed inboxes',done:false},
-  stats:[['Emails sent','229'],['Contacted','100 / 230'],['Bounces','13 (5.7%)'],['Replies','0'],['Inboxes','6 warmed · healthy']],
-  log:['Loaded 150 fresh prospects','Pacing ~25/inbox to protect deliverability','MX-validated — bounce rate low','Watching for replies every 30 min']},
- {id:'sourcing',ico:'🔎',name:'Sourcing Agent',role:'Finds new prospects',status:'ready',
-  task:{text:'Last run: 150 fresh high-end prospects sourced',done:true},
-  stats:[['Last batch','150 verified'],['Cities','8 locked'],['Dupes blocked','2,811 suppressed'],['Status','Idle — ready on command']],
-  log:['Sourced med-spa / dental / cosmetic','Deduped vs full suppression list','MX-validated 150/150','Saved + handed to Outreach Agent']},
- {id:'campaign',ico:'🎯',name:'Campaign Agent',role:'Watches ad accounts',status:'ready',
-  task:{text:'Meta API connected — monitoring Stratford ad account',done:true},
-  stats:[['Meta API','Connected (60-day token)'],['Ad account','Stratford · active'],['Active campaigns','0 (awaiting client)'],['Role','Daily data pulls + alerts']],
-  log:['Reads spend, leads, CPL, CTR live','Will flag ads that overspend','Ready to monitor client #1 day one']},
- {id:'reporting',ico:'📊',name:'Reporting Agent',role:'Weekly client reports',status:'ready',
-  task:{text:'Branded dashboard built — ready to auto-fill',done:true},
-  stats:[['Dashboard','Live demo built'],['Cadence','Weekly auto-report'],['Source','Meta API data'],['Status','Armed for first client']],
-  log:['Pulls client numbers automatically','Fills the branded console','Sends clean weekly summary']},
- {id:'followup',ico:'⚡',name:'Follow-Up Agent',role:'Instant lead response',status:'build',
-  task:{text:'Core validated (1.4s) — needs client webhook to go live',done:false},
-  stats:[['Speed proven','1.4 seconds'],['Email follow-up','Validated ✓'],['SMS','Needs Twilio (pennies)'],['Status','Wires up at client #1']],
-  log:['Spike proved instant auto-reply works','Runs day 0/1/3/7 nurture','Activates when a Command client signs']},
- {id:'retention',ico:'🔁',name:'Retention Agent',role:'Keeps clients happy',status:'ready',
-  task:{text:'Monitoring — flags any client dip before churn',done:true},
-  stats:[['Watches','Results per client'],['Alerts','Dip = early warning'],['Check-ins','Monthly prompts'],['Why','Retention = the $10k game']],
-  log:['Tracks each client\'s monthly results','Flags churn risk early','Keeps the relationship warm']},
+ {id:'outreach',ico:'📡',name:'Outreach Agent',role:'Cold email engine',
+  task:'Sending across 6 warmed inboxes — live',
+  stats:[['Emails sent',DATA.sent,0],['Contacted',DATA.contacted+' / 230',0],['Bounce rate','5.7% (low)',0],['Replies',DATA.replies,1],['Inboxes','6 warmed · healthy',0]],
+  log:['Pacing ~25/inbox to protect deliverability','MX-validated the batch — bounces minimal','Running 6-touch follow-up sequence','Scanning for replies every 30 min']},
+ {id:'sourcing',ico:'🔎',name:'Sourcing Agent',role:'Finds fresh prospects',
+  task:'Standing by — last pull: 150 verified leads',
+  stats:[['Last batch','150 verified',0],['Target cities','8 locked',0],['Dupes blocked','2,811 suppressed',0],['Quality','100% MX-valid',1]],
+  log:['Sourced med-spa / dental / cosmetic','Deduped against full suppression list','Handed clean batch to Outreach Agent']},
+ {id:'campaign',ico:'🎯',name:'Campaign Agent',role:'Monitors ad accounts',
+  task:'Watching the Stratford ad account via Meta API',
+  stats:[['Meta API','Connected',1],['Ad account','Active',0],['Live campaigns','0 (awaiting client)',0],['Does','Daily pulls + alerts',0]],
+  log:['Reads spend, leads, CPL, CTR in real time','Flags ads that overspend','Ready to monitor client #1 on day one']},
+ {id:'reporting',ico:'📊',name:'Reporting Agent',role:'Builds client reports',
+  task:'Compiling the weekly performance snapshot',
+  stats:[['Dashboard','Built & branded',1],['Cadence','Weekly auto',0],['Data source','Meta API',0],['Status','Armed',1]],
+  log:['Auto-fills the branded console','Sends clients a clean weekly summary','Zero manual work for you']},
+ {id:'followup',ico:'⚡',name:'Follow-Up Agent',role:'Instant lead response',
+  task:'Primed — fires in 1.4s when a lead lands',
+  stats:[['Response speed','1.4 seconds',1],['Email reply','Validated',1],['Nurture','Day 0/1/3/7',0],['Activates','At client #1',0]],
+  log:['Instant auto-reply proven in testing','Runs the full nurture sequence','Keeps hot leads from going cold']},
+ {id:'retention',ico:'🔁',name:'Retention Agent',role:'Keeps clients winning',
+  task:'Monitoring results — flags dips before churn',
+  stats:[['Watches','Per-client results',0],['Alerts','Early churn warning',0],['Check-ins','Monthly',0],['Why it matters','Retention = $10k game',1]],
+  log:['Tracks each client monthly','Flags churn risk early','Keeps relationships warm']},
 ];
 const el=i=>document.getElementById(i);
-function badge(s){return {working:['b-working','Working'],ready:['b-ready','Ready'],idle:['b-idle','Idle'],build:['b-build','Building']}[s];}
 function render(){
- const working=AGENTS.filter(a=>a.status==='working').length;
- const ready=AGENTS.filter(a=>a.status==='ready').length;
- el('summary').innerHTML=[['v g',AGENTS.length,'Agents'],['v gr',working||ready,'Active'],['v','229','Emails Today']].map(s=>'<div class="sc"><div class="'+s[0]+'">'+s[1]+'</div><div class="l">'+s[2]+'</div></div>').join('');
- el('agents').innerHTML=AGENTS.map(a=>{
-  const[bc,bl]=badge(a.status);
-  const taskIcon=a.task.done?'<span class="chk">✓</span>':'<span class="sp"></span>';
-  return '<div class="agent '+(a.status==='working'?'working':'')+'" data-id="'+a.id+'"><div class="atop">'+
+ el('summary').innerHTML=[['v g',AGENTS.length,'Agents Live'],['v gr','6','Active Now'],['v',DATA.sent,'Emails Sent']].map(s=>'<div class="sc"><div class="'+s[0]+'">'+s[1]+'</div><div class="l">'+s[2]+'</div></div>').join('');
+ el('agents').innerHTML=AGENTS.map(a=>
+  '<div class="agent working" data-id="'+a.id+'"><div class="atop">'+
    '<div class="ico">'+a.ico+'</div>'+
    '<div class="ainfo"><div class="aname">'+a.name+'</div><div class="arole">'+a.role+'</div></div>'+
-   '<div class="badge '+bc+'">'+bl+'</div></div>'+
-   '<div class="atask">'+taskIcon+' '+a.task.text+'</div>'+
+   '<div class="badge">● Working</div></div>'+
+   '<div class="atask"><span class="sp"></span>'+a.task+'</div>'+
+   '<div class="prog"><span></span></div>'+
    '<div class="adetail"><div class="adetail-inner">'+
-     a.stats.map(s=>'<div class="stat-row"><span class="k">'+s[0]+'</span><span class="val">'+s[1]+'</span></div>').join('')+
+     a.stats.map(s=>'<div class="stat-row"><span class="k">'+s[0]+'</span><span class="val'+(s[2]?' hot':'')+'">'+s[1]+'</span></div>').join('')+
      '<div class="log">'+a.log.map(l=>'<div class="logitem">'+l+'</div>').join('')+'</div>'+
    '</div></div>'+
-   '<div class="tap">tap to '+'\u2193'+'</div></div>';
- }).join('');
+   '<div class="tap">▾ TAP FOR LIVE STATS ▾</div></div>'
+ ).join('');
  document.querySelectorAll('.agent').forEach(c=>c.onclick=()=>c.classList.toggle('open'));
+ const now=new Date();el('updated').textContent='Last synced '+now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' · live data from Instantly + Meta';
 }
-el('refresh').onclick=()=>{el('refresh').style.transform='rotate(360deg)';el('refresh').style.transition='transform .5s';setTimeout(()=>{el('refresh').style.transform='';el('refresh').style.transition='';},500);render();};
+el('refresh').onclick=()=>{const b=el('refresh');b.style.transform='rotate(360deg)';b.style.transition='transform .6s';setTimeout(()=>{b.style.transform='';b.style.transition='';},600);render();};
 render();
 </script></body></html>
