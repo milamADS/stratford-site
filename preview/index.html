@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stratford Advertisements — Meta Ads for Practices That Mean to Grow</title>
+<meta name="description" content="Stratford Advertisements runs Meta ads for med spas, dental, and cosmetic practices. You keep your ad budget — we fill your calendar. 14-day free trial, no contract."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07070a;--bg2:#0c0c11;--panel:rgba(20,20,26,.55);--panel2:rgba(26,26,34,.7);
+  --line:rgba(201,162,75,.14);--line2:rgba(201,162,75,.28);
+  --gold:#c9a24b;--gold-soft:#dcc07e;--gold-bright:#f0d79a;
+  --ink:#f4f2ec;--muted:#9c968a;--muted2:#6f6a60;
+  --radius:16px;--radius-lg:24px;--maxw:1180px;
+  --shadow:0 30px 80px -30px rgba(0,0,0,.8);
+  --font:'Inter',-apple-system,system-ui,sans-serif;--serif:'Cormorant Garamond',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+canvas.stars{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.page{position:relative;z-index:1}
+.section{position:relative;max-width:var(--maxw);margin:0 auto;padding:clamp(70px,11vw,150px) 24px}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.7,.2,1),transform .8s cubic-bezier(.22,.7,.2,1);transition-delay:var(--rd,0ms);will-change:opacity,transform}
+[data-reveal].in{opacity:1;transform:none}
+.eyebrow{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-head{max-width:680px;margin:0 auto clamp(44px,6vw,76px);text-align:center}
+h2.big{font-family:var(--serif);font-size:clamp(30px,4.6vw,52px);font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.section-head p{margin-top:18px;color:var(--muted);font-size:17px;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto}
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;padding:14px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .18s,box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn-primary{color:#17130a;background:linear-gradient(180deg,var(--gold-bright),var(--gold));box-shadow:0 10px 30px -8px rgba(201,162,75,.5)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(201,162,75,.65)}
+.btn-outline{color:var(--ink);background:rgba(255,255,255,.04);border-color:var(--line2);backdrop-filter:blur(10px)}
+.btn-outline:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn-ghost{color:var(--ink);background:rgba(255,255,255,.05);border-color:var(--line2);padding:10px 18px;font-size:14px}
+.btn-ghost:hover{background:rgba(201,162,75,.12)}
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;max-width:var(--maxw);margin:0 auto;padding:22px 24px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.02em}
+.brand .mark{color:var(--gold);font-size:20px}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(130% 60% at 50% -10%,rgba(7,7,10,.6) 0%,rgba(7,7,10,.1) 46%,transparent 70%)}
+.hero-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;transform:translateY(-6vh)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line2);border-radius:30px;padding:7px 16px;margin-bottom:28px;background:rgba(201,162,75,.06)}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,6vw,74px);font-weight:700;line-height:1.02;letter-spacing:-.02em;max-width:16ch;text-shadow:0 2px 50px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold-bright),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{margin-top:24px;max-width:580px;font-size:clamp(16px,2vw,19px);line-height:1.6;color:var(--muted)}
+.hero-actions{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.trust-line{margin-top:30px;font-size:13px;color:var(--muted2);letter-spacing:.04em}
+/* stats strip */
+.hero-stats{display:flex;gap:clamp(28px,6vw,72px);justify-content:center;flex-wrap:wrap;padding:0 24px clamp(44px,7vw,70px)}
+.hstat{text-align:center}
+.hstat .v{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--gold-soft)}
+.hstat .l{font-size:12px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+/* FEATURE CARDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;padding:28px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(14px);transition:transform .25s,border-color .25s,background .25s;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 0% 0%,rgba(201,162,75,.08),transparent 45%);opacity:0;transition:opacity .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--line2);background:var(--panel2)}
+.card:hover::before{opacity:1}
+.card-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gold);background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.2);margin-bottom:16px}
+.card h3{font-size:18px;font-weight:600;margin-bottom:7px}
+.card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+/* TRUST SECTION */
+.trust-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,64px);align-items:center}
+.trust-card{background:var(--panel2);border:1px solid var(--line2);border-radius:var(--radius-lg);padding:32px;backdrop-filter:blur(14px)}
+.trust-card .row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.trust-card .row:last-child{border-bottom:none}
+.trust-card .ic{color:var(--gold);font-size:20px;flex:none}
+.trust-card .row b{display:block;font-size:15px;margin-bottom:2px}
+.trust-card .row span{font-size:13.5px;color:var(--muted)}
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{text-align:center;padding:8px}
+.step .n{font-family:var(--serif);font-size:30px;color:var(--gold);font-weight:700}
+.step h4{font-size:16px;margin:8px 0 6px}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.55}
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.price{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px 26px;display:flex;flex-direction:column;backdrop-filter:blur(14px)}
+.price.feat{border-color:var(--gold);background:linear-gradient(170deg,rgba(201,162,75,.08),var(--panel2))}
+.price .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#17130a;background:var(--gold);padding:4px 14px;border-radius:20px;font-weight:700}
+.price .nm{font-family:var(--serif);font-size:24px;font-weight:700}
+.price .pr{font-size:15px;color:var(--gold-soft);margin:6px 0 4px}
+.price .pr b{font-family:var(--serif);font-size:38px;color:var(--ink)}
+.price .desc{font-size:13.5px;color:var(--muted);margin-bottom:18px;min-height:38px}
+.price ul{list-style:none;margin:0 0 22px;flex:1}
+.price li{font-size:13.5px;color:var(--muted);padding:7px 0 7px 24px;position:relative;line-height:1.5}
+.price li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.price .how{display:block;text-align:center;margin-top:12px;color:var(--gold);font-size:12.5px}
+.price .how:hover{text-decoration:underline}
+/* CTA */
+.cta-card{max-width:760px;margin:0 auto;text-align:center;padding:clamp(44px,7vw,76px) clamp(28px,5vw,60px);border-radius:var(--radius-lg);background:radial-gradient(120% 140% at 50% 0%,rgba(201,162,75,.12),transparent 55%),var(--panel2);border:1px solid var(--line2);box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+/* FOOTER */
+.footer{max-width:var(--maxw);margin:0 auto;padding:60px 24px 40px;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line)}
+.footer .fb{font-family:var(--serif);font-weight:700;font-size:20px}
+.footer .fb .mark{color:var(--gold)}
+.footer p{font-size:13.5px;color:var(--muted);margin-top:8px;max-width:280px}
+.footer .cols{display:flex;gap:48px}
+.footer h5{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:12px}
+.footer a{display:block;font-size:13.5px;color:var(--muted);padding:3px 0}
+.footer a:hover{color:var(--ink)}
+.copyright{text-align:center;font-size:12.5px;color:var(--muted2);padding:24px}
+@media(max-width:980px){.grid3{grid-template-columns:repeat(2,1fr)}.trust-wrap{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.price-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+@media(max-width:720px){.nav-links{display:none}}
+@media(max-width:560px){.grid3{grid-template-columns:1fr}.hero-actions .btn{flex:1}}
+.bg-aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.bg-aurora span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35}.bg-aurora .b1{width:520px;height:520px;background:radial-gradient(circle,rgba(201,162,75,.30),transparent 70%);top:-10%;right:-8%}.bg-aurora .b2{width:460px;height:460px;background:radial-gradient(circle,rgba(70,90,150,.25),transparent 70%);top:40%;left:-12%}.bg-aurora .b3{width:400px;height:400px;background:radial-gradient(circle,rgba(201,162,75,.18),transparent 70%);bottom:-10%;right:10%}@media(prefers-reduced-motion:reduce){.bg-aurora{display:none}}
+.site-bg-img{position:fixed;inset:0;z-index:-1;background:linear-gradient(160deg,#0c0c11,#07070a 60%,#000);}.site-bg-img::before{content:"";position:absolute;inset:0;background:url("assets/site-bg.png") center center / cover no-repeat;opacity:.9;}.site-bg-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,7,10,.72),rgba(7,7,10,.88));}
+.nav{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}.nav.scrolled{background:rgba(7,7,10,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}\n</style></head>
+<body>
+<div class="site-bg-img"></div>
+<canvas class="stars" id="stars"></canvas>\n<div class="bg-aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div class="page">
+
+<nav class="nav">
+  <div class="brand"><span class="mark">&#9650;</span> Stratford</div>
+  <div class="nav-links"><a href="#services">Services</a><a href="#trust">How It Works</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+  <a href="#pricing" class="btn btn-ghost">Start Free Trial</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge" data-reveal>&#9650; Meta Ads &middot; Med Spas, Dental, Cosmetic &amp; Real Estate</div>
+    <h1 data-reveal style="--rd:80ms">You keep your ad budget.<br>We fill your <em>calendar</em>.</h1>
+    <p class="hero-sub" data-reveal style="--rd:200ms">Stratford runs Meta ads for med spas, dental, cosmetic practices, and real estate professionals that mean to grow &mdash; bringing you booked appointments while you focus on your patients.</p>
+    <div class="hero-actions" data-reveal style="--rd:320ms">
+      <a href="#pricing" class="btn btn-primary">Start Your Free Trial &rarr;</a>
+      <a href="#contact" class="btn btn-outline">Talk to Ethan</a>
+    </div>
+    <div class="trust-line" data-reveal style="--rd:440ms">14-day free trial &middot; No contract &middot; You own your ad account, always</div>
+  </div>
+  <div class="hero-stats" data-reveal style="--rd:560ms">
+    <div class="hstat"><div class="v">&infin;</div><div class="l">Your Budget, Your Account</div></div>
+    <div class="hstat"><div class="v">14 Days</div><div class="l">Free To Start</div></div>
+    <div class="hstat"><div class="v">Meta</div><div class="l">FB &amp; Instagram</div></div>
+  </div>
+</header>
+
+<section class="section" id="services">
+  <div class="section-head">
+    <div class="eyebrow" data-reveal>What We Do</div>
+    <h2 class="big" data-reveal style="--rd:80ms">Everything your practice needs to grow</h2>
+    <p data-reveal style="--rd:160ms">We don't just run ads. We build the whole engine that turns a stranger scrolling Instagram into a booked appointment on your calendar.</p>
+  </div>
+  <div class="grid3">
+    <div class="card" data-reveal><div class="card-ico">&#127919;</div><h3>Targeted Meta Ads</h3><p>Custom Facebook &amp; Instagram campaigns built to reach high-value local clients &mdash; patients or buyers &mdash; in your area &mdash; not wasted clicks.</p></div>
+    <div class="card" data-reveal style="--rd:90ms"><div class="card-ico">&#9889;</div><h3>Instant Lead Follow-Up</h3><p>The moment someone responds to your ad, they get an instant reply &mdash; so hot leads never go cold while your front desk is busy.</p></div>
+    <div class="card" data-reveal style="--rd:180ms"><div class="card-ico">&#128197;</div><h3>Booked Appointments</h3><p>We route interested leads straight to your calendar. You just show up and do what you do best.</p></div>
+    <div class="card" data-reveal style="--rd:270ms"><div class="card-ico">&#128202;</div><h3>Live Results Dashboard</h3><p>See every lead, every booking, every dollar &mdash; in one clean dashboard, updated for you.</p></div>
+    <div class="card" data-reveal style="--rd:360ms"><div class="card-ico">&#127912;</div><h3>Ad Copy &amp; Creative</h3><p>We write and design ads that match your brand and actually stop the scroll in your market.</p></div>
+    <div class="card" data-reveal style="--rd:450ms"><div class="card-ico">&#128260;</div><h3>Weekly Optimization</h3><p>We cut what's not working and double down on what is &mdash; every week, your results compound.</p></div>
+  </div>
+</section>
+
+<section class="section" id="trust">
+  <div class="trust-wrap">
+    <div data-reveal>
+      <div class="eyebrow">The Stratford Promise</div>
+      <h2 class="big">Your money never leaves your hands</h2>
+      <p style="margin-top:16px;color:var(--muted);font-size:16px;line-height:1.7">Most agencies make you hand over your ad budget. We don't. You pay Meta directly from your own account &mdash; we just manage the campaigns for a flat fee. You keep full ownership of your account, your data, and every lead. Always.</p>
+      <a href="#pricing" class="btn btn-primary" style="margin-top:24px">See Pricing &rarr;</a>
+    </div>
+    <div class="trust-card" data-reveal style="--rd:160ms">
+      <div class="row"><span class="ic">&#128273;</span><div><b>You pay Meta directly</b><span>Your budget stays in your own ad account. We never touch it.</span></div></div>
+      <div class="row"><span class="ic">&#128274;</span><div><b>You own everything</b><span>Your account, your data, your leads &mdash; yours to keep if we ever part ways.</span></div></div>
+      <div class="row"><span class="ic">&#128176;</span><div><b>One flat fee</b><span>No percentage of spend, no surprises. Simple and transparent.</span></div></div>
+      <div class="row"><span class="ic">&#9989;</span><div><b>14-day free trial</b><span>No contract, cancel anytime. We earn your business, we don't lock you in.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div class="eyebrow" data-reveal>How It Works</div><h2 class="big" data-reveal style="--rd:80ms">Four simple steps to a fuller calendar</h2></div>
+  <div class="steps">
+    <div class="step" data-reveal><div class="n">I</div><h4>We Build</h4><p>We create and launch your Meta ad campaigns, tailored to your practice.</p></div>
+    <div class="step" data-reveal style="--rd:100ms"><div class="n">II</div><h4>Leads Come In</h4><p>Local clients respond to your ads &mdash; and get an instant reply.</p></div>
+    <div class="step" data-reveal style="--rd:200ms"><div class="n">III</div><h4>They Book</h4><p>Interested leads land straight on your calendar. No phone tag.</p></div>
+    <div class="step" data-reveal style="--rd:300ms"><div class="n">IV</div><h4>You Grow</h4><p>We optimize weekly and report your results. You just show up.</p></div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="section-head"><div class="eyebrow" data-reveal>Pricing</div><h2 class="big" data-reveal style="--rd:80ms">Simple plans. No lock-in.</h2><p data-reveal style="--rd:160ms">Start with a 14-day free trial. You pay Meta directly &mdash; our fee is flat and separate.</p></div>
+  <div class="price-grid">
+    <div class="price" data-reveal>
+      <div class="nm">Growth</div><div class="pr"><b>$2,000</b>/mo</div>
+      <div class="desc">For practices ready to fill their calendar with local clients.</div>
+      <ul><li>Full campaign setup &amp; management</li><li>Custom ad copy &amp; creative</li><li>Your own live results dashboard</li><li>Daily optimization &amp; weekly updates</li><li>Full ownership of your ad account</li></ul>
+      <a href="https://buy.stripe.com/8x228k8HN0v69NJb4d0ZW02" class="btn btn-outline" style="justify-content:center">Start Growth Trial</a>
+      <a href="how/growth.html" class="how">See how Growth works &rarr;</a>
+    </div>
+    <div class="price feat" data-reveal style="--rd:100ms">
+      <div class="tag">Most Popular</div>
+      <div class="nm">Bespoke</div><div class="pr"><b>$3,000</b>/mo</div>
+      <div class="desc">For high-volume &amp; premium practices that want more.</div>
+      <ul><li>Everything in Growth</li><li>Priority strategy &amp; faster turnaround</li><li>Advanced audience &amp; funnel builds</li><li>Hands-on creative direction</li><li>Dedicated reporting &amp; check-ins</li></ul>
+      <a href="https://buy.stripe.com/eVqfZae270v6aRNegp0ZW03" class="btn btn-primary" style="justify-content:center">Start Bespoke Trial</a>
+      <a href="how/bespoke.html" class="how">See how Bespoke works &rarr;</a>
+    </div>
+    <div class="price" data-reveal style="--rd:200ms">
+      <div class="nm">Command</div><div class="pr"><b>$10,000</b>/mo</div>
+      <div class="desc">The full engine, run entirely for you. By application.</div>
+      <ul><li>Everything in Bespoke</li><li>Automated lead follow-up &amp; booking</li><li>Done-for-you sales &amp; ops systems</li><li>Multi-channel reach beyond Meta</li><li>Every lead tracked end to end</li></ul>
+      <a href="#contact" class="btn btn-outline" style="justify-content:center">Apply for Command</a>
+      <a href="how/command.html" class="how">See how Command works &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="cta-card">
+    <div class="eyebrow" data-reveal>Ready When You Are</div>
+    <h2 class="big" data-reveal style="--rd:140ms">Let's fill your calendar</h2>
+    <p data-reveal style="--rd:220ms" style="color:var(--muted);margin-top:16px;font-size:17px">Start your 14-day free trial, or reach out and talk it through with Ethan directly. No pressure, no contract.</p>
+    <div class="hero-actions" data-reveal style="--rd:300ms;margin-top:28px;justify-content:center">
+      <a href="#pricing" class="btn btn-primary">Start Free Trial &rarr;</a>
+      <a href="mailto:ethan@stratfordads.com" class="btn btn-outline">Email Ethan</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div><div class="fb"><span class="mark">&#9650;</span> Stratford</div><p>Meta advertising for med spas, dental, and cosmetic practices that mean to grow.</p></div>
+  <div class="cols">
+    <div><h5>Company</h5><a href="#services">Services</a><a href="#trust">How It Works</a><a href="#pricing">Pricing</a></div>
+    <div><h5>Plans</h5><a href="how/growth.html">Growth</a><a href="how/bespoke.html">Bespoke</a><a href="how/command.html">Command</a></div>
+    <div><h5>Contact</h5><a href="mailto:ethan@stratfordads.com">ethan@stratfordads.com</a></div>
+  </div>
+</footer>
+<div class="copyright">&copy; <span id="yr"></span> Stratford Advertisements. You keep your budget. We fill your calendar.</div>
+</div>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+// starfield canvas — lightweight, phone-friendly
+(function(){
+ const c=document.getElementById('stars'),x=c.getContext('2d');let W,H,stars=[];
+ const rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ function size(){W=c.width=innerWidth;H=c.height=innerHeight;const n=Math.min(140,Math.floor(W*H/14000));stars=[];for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.2,a:Math.random(),s:Math.random()*.02+.004});}
+ size();addEventListener('resize',size);
+ function draw(){x.clearRect(0,0,W,H);
+  // subtle gold glow top-right
+  const g=x.createRadialGradient(W*.82,H*.08,0,W*.82,H*.08,W*.5);g.addColorStop(0,'rgba(201,162,75,.07)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+  for(const s of stars){s.a+=s.s;const tw=.5+.5*Math.sin(s.a);x.fillStyle='rgba(220,210,180,'+(tw*.6)+')';x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill();}
+  if(!rm)requestAnimationFrame(draw);}
+ draw();
+})();
+// scroll reveal
+(function(){const els=document.querySelectorAll('[data-reveal]');const rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if(rm){els.forEach(e=>e.classList.add('in'));return;}
+ const io=new IntersectionObserver((ents)=>{ents.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+ els.forEach(e=>io.observe(e));})();
+</script>
+<script>/*parallaxBG*/(function(){const au=document.querySelector(".bg-aurora");const cv=document.getElementById("stars");let ty=0,cy=0;function loop(){cy+=(ty-cy)*0.08;if(au){const b=au.children;b[0].style.transform="translateY("+(cy*0.15)+"px)";b[1].style.transform="translateY("+(-cy*0.12)+"px)";b[2].style.transform="translateY("+(cy*0.1)+"px)";}if(cv)cv.style.transform="translateY("+(cy*0.04)+"px)";requestAnimationFrame(loop);}addEventListener("scroll",()=>{ty=window.scrollY;},{passive:true});loop();})();<\/script>
+<script>(function(){const n=document.querySelector(".nav");addEventListener("scroll",()=>{n.classList.toggle("scrolled",window.scrollY>40);},{passive:true});})();<\/script>\n</body></html>
