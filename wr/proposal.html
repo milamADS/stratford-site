@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stratford × White Rocks — Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0d10;--surface:#121519;--surface2:#161a1f;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --ink:#eef1f4;--ink2:#c3cad2;--muted:#7f8a96;--muted2:#58616b;
+  --gold:#c9a24b;--gold2:#d9bd79;--green:#5fcf8e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:400;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;line-height:1.6}
+.doc{max-width:900px;margin:0 auto}
+
+/* top bar — matches dashboard */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;border-bottom:1px solid var(--line);background:var(--surface)}
+.bl{display:flex;align-items:center;gap:18px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;letter-spacing:.1em}.logo .d{color:var(--gold)}
+.divider{width:1px;height:20px;background:var(--line2)}
+.doclabel{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ref{font-size:11px;color:var(--muted2);letter-spacing:.06em}
+
+/* cover */
+.cover{padding:60px 40px 46px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101317,var(--bg))}
+.cover .conf{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:700;line-height:1.08;letter-spacing:-.01em;max-width:17ch}
+.cover .lede{color:var(--ink2);font-size:16px;margin-top:20px;max-width:620px;line-height:1.7;font-weight:300}
+.meta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;border-top:1px solid var(--line);padding-top:24px}
+.meta-row .m .k{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);font-weight:500}
+.meta-row .m .v{font-size:14px;color:var(--ink);margin-top:6px;font-weight:500}
+
+/* sections */
+.body{padding:44px 40px}
+.sec{margin-bottom:40px}
+.sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.sechead .no{font-size:11px;color:var(--gold);font-weight:600;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.sechead h2{font-size:16px;font-weight:600;letter-spacing:.01em;color:var(--ink)}
+.sec p{color:var(--ink2);font-size:14.5px;margin-bottom:12px;max-width:720px;font-weight:300}
+.sec p b{color:var(--ink);font-weight:500}
+
+/* flow table */
+.flow{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px}
+.flow .r{display:grid;grid-template-columns:48px 200px 1fr;gap:18px;padding:16px 20px;border-top:1px solid var(--line);align-items:center}
+.flow .r:first-child{border-top:none}
+.flow .no2{font-size:13px;color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
+.flow .t{font-size:14px;font-weight:500;color:var(--ink)}
+.flow .d{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* value grid */
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.vcell{padding:18px 20px;border-right:1px solid var(--line);border-top:1px solid var(--line)}
+.vcell:nth-child(-n+2){border-top:none}
+.vcell:nth-child(even){border-right:none}
+.vcell .t{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.vcell .d{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* callout */
+.callout{border:1px solid var(--line2);border-left:2px solid var(--gold);border-radius:6px;padding:22px 26px;background:var(--surface)}
+.callout .q{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.5;color:var(--ink);font-weight:600}
+.callout .q .hl{color:var(--gold2)}
+
+/* promise */
+.promise{border:1px solid var(--line);border-radius:8px;padding:18px 22px;background:var(--surface);font-size:14px;color:var(--ink2);line-height:1.7}
+.promise b{color:var(--gold2);font-weight:500}
+
+/* pricing table */
+.ptbl{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ptbl .h{display:grid;grid-template-columns:1.4fr 1fr 1.6fr;gap:14px;padding:12px 22px;background:var(--surface2);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);font-weight:600}
+.ptbl .r{display:grid;grid-template-columns:1.4fr 1fr 1.6fr;gap:14px;padding:16px 22px;border-top:1px solid var(--line);align-items:center}
+.ptbl .nm{font-size:15px;font-weight:600;color:var(--ink)}
+.ptbl .amt{font-size:13.5px;color:var(--gold2)}
+.ptbl .ds{font-size:13px;color:var(--muted)}
+.fine{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.65;max-width:720px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.st{padding:18px 20px;border-right:1px solid var(--line)}
+.st:last-child{border-right:none}
+.st .n{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.st .x{font-size:13.5px;color:var(--ink2);line-height:1.5}
+
+/* footer */
+.foot{padding:24px 40px;border-top:1px solid var(--line);background:var(--surface);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot .fb{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700}.foot .fb .d{color:var(--gold)}
+.foot .fc{font-size:12px;color:var(--muted);margin-top:3px}
+.foot .r{font-size:12px;color:var(--muted2);text-align:right}
+@media(max-width:820px){.vgrid,.steps{grid-template-columns:1fr}.meta-row{grid-template-columns:1fr}.flow .r{grid-template-columns:40px 1fr}.flow .d{grid-column:1/-1}}
+</style></head>
+<body><div class="doc">
+
+<div class="bar">
+  <div class="bl"><div class="logo">Stratford<span class="d">.</span></div><div class="divider"></div><div class="doclabel">Engagement Proposal</div></div>
+  <div class="ref">REF · WR-2026-11</div>
+</div>
+
+<div class="cover">
+  <div class="conf">Confidential · Prepared for White Rocks</div>
+  <h1>A qualified buyer pipeline, built before the doors open.</h1>
+  <div class="lede">Meta advertising engineered to capture high-net-worth interest in the UMusic Hotel &amp; Private Residences — and deliver it, tracked and organized, to your sales team.</div>
+  <div class="meta-row">
+    <div class="m"><div class="k">Prepared For</div><div class="v">Michelle Doss — Marketing &amp; Comms</div></div>
+    <div class="m"><div class="k">Prepared By</div><div class="v">Ethan Milam — Stratford Advertisements</div></div>
+    <div class="m"><div class="k">Scope</div><div class="v">Pre-Launch Lead Generation</div></div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="sec">
+    <div class="sechead"><span class="no">01</span><h2>The Opportunity</h2></div>
+    <p>White Rocks carries something almost no development ever has: <b>Universal Music Group's first U.S. hotel and private residences</b>, set in the Austin Hill Country alongside a five-star hotel and a 10,000-seat venue. That brand is a magnet for exactly the buyer you want.</p>
+    <p>Our role is focused and clear — put that story in front of the people who can afford to be part of it, and capture their interest early. We do not replace your brokerage or brand team. We feed them a steady, qualified pipeline, so when sales opens, your team opens to a warm list rather than a cold start.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">02</span><h2>Engagement Flow</h2></div>
+    <div class="flow">
+      <div class="r"><span class="no2">01</span><span class="t">Build &amp; run campaigns</span><span class="d">Facebook and Instagram advertising engineered for qualified, affluent buyers — precision over volume.</span></div>
+      <div class="r"><span class="no2">02</span><span class="t">Capture interest</span><span class="d">Prospects register for the Priority Reservation list. Each becomes a clean, tracked lead.</span></div>
+      <div class="r"><span class="no2">03</span><span class="t">Instant follow-up</span><span class="d">Every inquiry receives an immediate response, so no high-value prospect goes cold.</span></div>
+      <div class="r"><span class="no2">04</span><span class="t">Route to sales</span><span class="d">Qualified leads delivered directly to your Christie's brokerage — organized and ready to work.</span></div>
+      <div class="r"><span class="no2">05</span><span class="t">Full transparency</span><span class="d">A live dashboard reports every lead, its source, and its cost, updated continuously.</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">03</span><h2>Reaching the Right Buyer</h2></div>
+    <p>For a product at this price, the goal is not volume — it is <b>qualified interest</b>. Meta is not where a $2M residence is purchased; it is where the right buyer raises their hand. We then hand that interest to your team to qualify and close in person.</p>
+    <div class="vgrid">
+      <div class="vcell"><div class="t">Proxy Targeting</div><div class="d">Luxury real estate, private aviation, yachting, luxury-brand affinity, second-home &amp; investment behaviors, and high-value geographies.</div></div>
+      <div class="vcell"><div class="t">Lookalike Modeling</div><div class="d">Audiences modeled on White Rocks' own early registrants and Christie's existing buyer list — finding more of your actual buyers at scale.</div></div>
+      <div class="vcell"><div class="t">Retargeting</div><div class="d">Everyone who views the renderings or visits the site stays engaged across their full decision window.</div></div>
+      <div class="vcell"><div class="t">Quality Over Volume</div><div class="d">A focused set of genuinely qualified registrants is worth more than thousands of unqualified clicks. We optimize for lead quality.</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">04</span><h2>The Advantage</h2></div>
+    <div class="callout">
+      <div class="q">"A Universal Music Group–branded residence, in the Austin Hill Country, among the first in the world — that story sells itself to the right audience. Our job is to put it in front of <span class="hl">exactly the people who can afford it and want to be part of something iconic</span>, and capture that interest before anyone else does."</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">05</span><h2>The Stratford Promise</h2></div>
+    <div class="promise">You keep full control of your ad account and budget — it stays in your name, and <b>we never hold your spend</b>. We manage the campaigns, creative, and reporting for a single flat fee. Your account, your data, and every lead remain yours. Always.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">06</span><h2>Engagement &amp; Investment</h2></div>
+    <div class="ptbl">
+      <div class="h"><span>Engagement</span><span>Structure</span><span>Best For</span></div>
+      <div class="r"><span class="nm">Launch Pilot</span><span class="amt">Flat monthly fee</span><span class="ds">Proving the pipeline with a focused first push</span></div>
+      <div class="r"><span class="nm">Full Pre-Launch</span><span class="amt">Flat monthly fee</span><span class="ds">Scaling the qualified waitlist across all priorities</span></div>
+    </div>
+    <div class="fine">The management fee is flat and fully separate from ad spend, which stays in your own account. We begin focused, prove it with real tracked leads, and scale from there. The final figure is tailored to the scope you prioritize first — confirmed once we align on timeline and lead priority (for-sale residences, rentals, or hotel).</div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">07</span><h2>Next Steps</h2></div>
+    <div class="steps">
+      <div class="st"><div class="n">Step One</div><div class="x">A short call to align on timeline and first priority.</div></div>
+      <div class="st"><div class="n">Step Two</div><div class="x">We tailor the launch plan and confirm scope &amp; investment.</div></div>
+      <div class="st"><div class="n">Step Three</div><div class="x">We build, launch, and begin delivering tracked leads to your team.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <div><div class="fb">Stratford<span class="d">.</span> Advertisements</div><div class="fc">Ethan Milam · ethan@stratfordads.com</div></div>
+  <div class="r">Confidential · Prepared for White Rocks · 2026</div>
+</div>
+
+</div></body></html>

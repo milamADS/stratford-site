@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>White Rocks — Campaign Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0d10;--surface:#121519;--surface2:#161a1f;--elev:#1a1f25;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --ink:#eef1f4;--ink2:#c3cad2;--muted:#7f8a96;--muted2:#58616b;
+  --gold:#c9a24b;--gold2:#d9bd79;--green:#4ea87a;--green2:#5fcf8e;--red:#c96b5f;
+  --mono:'Inter';
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:400;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+.app{max-width:1200px;margin:0 auto}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid var(--line);background:var(--surface)}
+.bl{display:flex;align-items:center;gap:20px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;letter-spacing:.08em}.logo .d{color:var(--gold)}
+.divider{width:1px;height:22px;background:var(--line2)}
+.ctx{font-size:12px;color:var(--muted);line-height:1.4}
+.ctx b{display:block;color:var(--ink2);font-weight:500;font-size:13px;letter-spacing:0}
+.br{display:flex;align-items:center;gap:18px}
+.status{font-size:11.5px;color:var(--green2);display:flex;align-items:center;gap:7px;font-weight:500}
+.status .dot{width:6px;height:6px;border-radius:50%;background:var(--green2);box-shadow:0 0 8px var(--green2)}
+.period{font-size:11.5px;color:var(--muted);border:1px solid var(--line2);border-radius:6px;padding:6px 12px}
+
+.body{padding:24px 28px 32px}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);margin-bottom:20px}
+.kpi{padding:18px 22px;border-right:1px solid var(--line)}
+.kpi:last-child{border-right:none}
+.kpi .k{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.kpi .v{font-size:30px;font-weight:600;margin-top:10px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:11.5px;color:var(--muted);margin-top:7px;display:flex;align-items:center;gap:6px}
+.chg{font-weight:600;font-variant-numeric:tabular-nums}
+.chg.up{color:var(--green2)}.chg.dn{color:var(--green2)}
+
+/* grid */
+.grid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.phead{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.phead .ttl{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink)}
+.phead .meta{font-size:11px;color:var(--muted2);text-transform:uppercase;letter-spacing:.08em}
+.pbody{padding:18px 20px}
+
+/* chart */
+.chart{display:flex;align-items:flex-end;gap:14px;height:168px;padding:8px 4px 0}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;height:100%;justify-content:flex-end}
+.col .val{font-size:11px;color:var(--ink2);font-weight:500;font-variant-numeric:tabular-nums}
+.col .b{width:70%;background:linear-gradient(180deg,#d9bd79,#8a7435);border-radius:3px 3px 0 0;position:relative}
+.col .lbl{font-size:10.5px;color:var(--muted2);letter-spacing:.03em}
+.gridlines{position:relative}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);font-weight:500;padding:0 0 12px}
+.tbl th.r,.tbl td.r{text-align:right}
+.tbl td{padding:12px 0;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);vertical-align:middle}
+.tbl td .nm{color:var(--ink);font-weight:500}
+.tbl td .loc{color:var(--muted);font-size:11.5px;margin-top:2px}
+.tbl td .t{color:var(--muted2);font-size:11px;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:10px;padding:3px 9px;border-radius:5px;font-weight:600;letter-spacing:.03em}
+.pill.new{color:var(--gold2);background:rgba(201,162,75,.12)}
+.pill.sent{color:var(--green2);background:rgba(78,168,122,.14)}
+
+/* bars list */
+.brow{display:grid;grid-template-columns:140px 1fr 44px;gap:14px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.brow:first-child{border-top:none;padding-top:4px}
+.brow .n{font-size:12.5px;color:var(--ink2)}
+.brow .tk{height:5px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.brow .fl{height:100%;background:linear-gradient(90deg,#8a7435,#d9bd79);border-radius:4px}
+.brow .p{font-size:12px;color:var(--ink2);text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.sectitle{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);font-weight:600;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+.sectitle:first-child{border:none;padding-top:0;margin-top:0}
+.pv{font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.pvsub{font-size:11.5px;color:var(--muted);margin-top:5px}
+
+.foot{padding:16px 28px;border-top:1px solid var(--line);font-size:11px;color:var(--muted2);display:flex;justify-content:space-between;letter-spacing:.02em}
+@media(max-width:960px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+</style></head>
+<body><div class="app">
+
+<div class="bar">
+  <div class="bl">
+    <div class="logo">Stratford<span class="d">.</span></div>
+    <div class="divider"></div>
+    <div class="ctx"><b>White Rocks — UMusic Residences</b>Priority Reservation Campaign</div>
+  </div>
+  <div class="br">
+    <div class="status"><span class="dot"></span>Live</div>
+    <div class="period">This week · Nov 11–18</div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">Qualified Leads</div><div class="v">148</div><div class="sub"><span class="chg up">▲ 22.4%</span> vs. prior week</div></div>
+    <div class="kpi"><div class="k">Delivered to Sales</div><div class="v">148</div><div class="sub">100% routed to Christie's</div></div>
+    <div class="kpi"><div class="k">Cost / Qualified Lead</div><div class="v">$41</div><div class="sub"><span class="chg dn">▼ 9.1%</span> week over week</div></div>
+    <div class="kpi"><div class="k">Qualified Reach</div><div class="v">312K</div><div class="sub">affluent audience served</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="phead"><span class="ttl">Lead Acquisition</span><span class="meta">Daily · last 7 days</span></div>
+      <div class="pbody">
+        <div class="chart">
+          <div class="col"><span class="val">14</span><div class="b" style="height:42%"></div><span class="lbl">Mon</span></div>
+          <div class="col"><span class="val">19</span><div class="b" style="height:58%"></div><span class="lbl">Tue</span></div>
+          <div class="col"><span class="val">12</span><div class="b" style="height:36%"></div><span class="lbl">Wed</span></div>
+          <div class="col"><span class="val">26</span><div class="b" style="height:80%"></div><span class="lbl">Thu</span></div>
+          <div class="col"><span class="val">22</span><div class="b" style="height:67%"></div><span class="lbl">Fri</span></div>
+          <div class="col"><span class="val">33</span><div class="b" style="height:100%"></div><span class="lbl">Sat</span></div>
+          <div class="col"><span class="val">22</span><div class="b" style="height:67%"></div><span class="lbl">Sun</span></div>
+        </div>
+      </div>
+      <div class="phead" style="border-top:1px solid var(--line)"><span class="ttl">Recent Qualified Leads</span><span class="meta">Live feed</span></div>
+      <div class="pbody" style="padding-top:8px">
+        <table class="tbl">
+          <thead><tr><th>Prospect</th><th>Interest</th><th class="r">Status</th><th class="r">Received</th></tr></thead>
+          <tbody>
+            <tr><td><div class="nm">J. Hartwell</div><div class="loc">Austin, TX</div></td><td>For-sale residence</td><td class="r"><span class="pill new">New</span></td><td class="r"><span class="t">2m</span></td></tr>
+            <tr><td><div class="nm">M. Castellanos</div><div class="loc">Houston, TX</div></td><td>Investment inquiry</td><td class="r"><span class="pill sent">Routed</span></td><td class="r"><span class="t">18m</span></td></tr>
+            <tr><td><div class="nm">R. &amp; L. Whitmore</div><div class="loc">Dallas, TX</div></td><td>Penthouse</td><td class="r"><span class="pill sent">Routed</span></td><td class="r"><span class="t">1h</span></td></tr>
+            <tr><td><div class="nm">A. Beaumont</div><div class="loc">Scottsdale, AZ</div></td><td>Second home</td><td class="r"><span class="pill sent">Routed</span></td><td class="r"><span class="t">3h</span></td></tr>
+            <tr><td><div class="nm">D. Okafor</div><div class="loc">Miami, FL</div></td><td>Membership + residence</td><td class="r"><span class="pill sent">Routed</span></td><td class="r"><span class="t">5h</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="phead"><span class="ttl">Attribution &amp; Segments</span></div>
+      <div class="pbody">
+        <div class="sectitle">Source of Qualified Leads</div>
+        <div class="brow"><span class="n">Instagram · Renderings</span><span class="tk"><span class="fl" style="width:44%"></span></span><span class="p">44%</span></div>
+        <div class="brow"><span class="n">Facebook · UMG Story</span><span class="tk"><span class="fl" style="width:29%"></span></span><span class="p">29%</span></div>
+        <div class="brow"><span class="n">Retargeting</span><span class="tk"><span class="fl" style="width:19%"></span></span><span class="p">19%</span></div>
+        <div class="brow"><span class="n">Lookalike Audience</span><span class="tk"><span class="fl" style="width:8%"></span></span><span class="p">8%</span></div>
+
+        <div class="sectitle">Buyer Intent</div>
+        <div class="brow"><span class="n">For-sale residences</span><span class="tk"><span class="fl" style="width:58%"></span></span><span class="p">58%</span></div>
+        <div class="brow"><span class="n">Rentals</span><span class="tk"><span class="fl" style="width:27%"></span></span><span class="p">27%</span></div>
+        <div class="brow"><span class="n">Hotel / Membership</span><span class="tk"><span class="fl" style="width:15%"></span></span><span class="p">15%</span></div>
+
+        <div class="sectitle">Estimated Pipeline Value</div>
+        <div class="pv">$340M<span style="font-size:18px;color:var(--muted)">+</span></div>
+        <div class="pvsub">Across 148 qualified registrants · avg. interest basis</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <span>Illustrative preview · Figures representative of campaign reporting</span>
+  <span>Every lead tracked end-to-end · You retain full ownership of account &amp; budget</span>
+</div>
+
+</div></body></html>
