@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stratford Advertisements — Meta Advertising for Practices That Mean to Grow</title>
+<meta name="description" content="Stratford runs Meta advertising for med spas, dental, cosmetic practices, and real estate. You keep your ad budget. We fill your calendar."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0a0b;--ink:#faf8f3;--muted:#b8b2a6;--muted2:#8a857b;
+  --line:rgba(243,241,236,.1);--line2:rgba(243,241,236,.18);
+  --gold:#c9a24b;--gold-soft:#d8bd7a;
+  --maxw:1100px;--font:'Inter',-apple-system,system-ui,sans-serif;--serif:'Cormorant Garamond',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6;font-weight:300}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+.sec{padding:clamp(72px,11vw,150px) 0}
+[data-r]{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+[data-r].in{opacity:1;transform:none}
+.kicker{font-size:11px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+h1,h2,h3{font-weight:400;letter-spacing:-.01em}
+.serif{font-family:var(--serif)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;font-weight:500;letter-spacing:.02em;padding:15px 28px;border:1px solid var(--ink);cursor:pointer;transition:background .25s,color .25s,border-color .25s;text-transform:uppercase}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.btn.line{color:var(--ink);background:transparent}
+.btn.line:hover{background:var(--ink);color:var(--bg)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#17130a}
+.btn.gold:hover{background:transparent;color:var(--gold)}
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.sc{background:rgba(10,10,11,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.navlinks{display:flex;gap:34px;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+/* HERO */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--line)}
+.hero h1{font-family:var(--serif);font-size:clamp(44px,8vw,96px);line-height:1.0;letter-spacing:-.02em;max-width:14ch}
+.hero h1 .g{color:var(--gold-soft)}
+.hero .lead{margin-top:30px;max-width:520px;font-size:clamp(16px,1.8vw,19px);color:var(--muted);font-weight:300;line-height:1.7}
+.hero .acts{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
+.hero .fine{margin-top:30px;font-size:12.5px;letter-spacing:.08em;color:var(--muted2);text-transform:uppercase}
+/* marquee of verticals */
+.verts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden}
+.verts .row{display:flex;justify-content:center;gap:clamp(28px,5vw,64px);flex-wrap:wrap;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted2)}
+/* SECTION HEAD */
+.shead{max-width:640px;margin-bottom:clamp(44px,6vw,72px)}
+.shead h2{font-family:var(--serif);font-size:clamp(30px,4.6vw,52px);line-height:1.08}
+.shead p{margin-top:18px;color:var(--muted);font-size:17px;max-width:540px}
+/* SERVICES — editorial list, no cards/bubbles */
+.svc{border-top:1px solid var(--line)}
+.svc .item{display:grid;grid-template-columns:60px 1fr 1.3fr;gap:24px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line);transition:padding-left .3s}
+.svc .item:hover{padding-left:12px}
+.svc .num{font-family:var(--serif);font-size:16px;color:var(--gold);letter-spacing:.1em}
+.svc .item h3{font-size:21px;font-weight:400}
+.svc .item p{color:var(--muted);font-size:15px;line-height:1.65}
+/* TRUST */
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,90px);align-items:center;border-top:1px solid var(--line);padding-top:clamp(56px,7vw,80px)}
+.trust h2{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.1}
+.trust .body{color:var(--muted);font-size:16.5px;line-height:1.8;margin-top:20px}
+.tlist{border-top:1px solid var(--line)}
+.tlist .r{padding:22px 0;border-bottom:1px solid var(--line)}
+.tlist .r b{font-weight:500;font-size:16px;display:block;margin-bottom:5px}
+.tlist .r span{color:var(--muted);font-size:14.5px}
+/* PROCESS */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.proc .s{background:var(--bg);padding:34px 26px}
+.proc .s .n{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.1em;margin-bottom:16px}
+.proc .s h4{font-size:18px;font-weight:400;margin-bottom:10px}
+.proc .s p{color:var(--muted);font-size:14px;line-height:1.6}
+/* PRICING */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.price{background:var(--bg);padding:40px 32px;display:flex;flex-direction:column}
+.price.feat{background:#0e0e10}
+.price .nm{font-family:var(--serif);font-size:24px}
+.price .amt{margin:18px 0 6px;font-family:var(--serif);font-size:44px;color:var(--ink)}
+.price .amt span{font-family:var(--font);font-size:14px;color:var(--muted);font-weight:300}
+.price .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.price .d{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;min-height:42px}
+.price ul{list-style:none;flex:1;margin-bottom:28px}
+.price li{font-size:14px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)}
+.price .how{display:block;text-align:center;margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
+.price .how:hover{color:var(--gold)}
+/* CTA */
+.cta{text-align:center;border-top:1px solid var(--line)}
+.cta h2{font-family:var(--serif);font-size:clamp(34px,5.5vw,64px);line-height:1.05;max-width:16ch;margin:0 auto}
+.cta p{margin:22px auto 0;color:var(--muted);font-size:17px;max-width:460px}
+.cta .acts{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+/* FOOTER */
+.foot{border-top:1px solid var(--line);padding:56px 0 40px}
+.foot .in{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.foot .logo{font-size:18px}
+.foot .tag{color:var(--muted);font-size:13.5px;margin-top:10px;max-width:260px}
+.foot .cols{display:flex;gap:56px}
+.foot h5{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:14px}
+.foot a{display:block;font-size:14px;color:var(--muted);padding:4px 0}
+.foot a:hover{color:var(--ink)}
+.copy{text-align:center;font-size:12px;letter-spacing:.06em;color:var(--muted2);padding:30px 0;border-top:1px solid var(--line)}
+@media(max-width:860px){
+  .svc .item{grid-template-columns:40px 1fr;gap:16px}.svc .item p{grid-column:1/-1;margin-top:4px}
+  .trust{grid-template-columns:1fr;gap:40px}.proc{grid-template-columns:1fr 1fr}.prices{grid-template-columns:1fr}
+  .navlinks{display:none}
+}
+.hero{position:relative;overflow:hidden}.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url("assets/hero-office.png") center center / cover no-repeat;filter:brightness(1.25) saturate(1.05);}.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,11,.70) 0%,rgba(10,10,11,.35) 45%,rgba(10,10,11,.12) 100%),linear-gradient(180deg,rgba(10,10,11,.15),rgba(10,10,11,.75));}.hero .wrap{position:relative;z-index:1}
+</style></head>
+<body>
+<nav class="nav" id="nav"><div class="in">
+  <div class="logo">Stratford</div>
+  <div class="navlinks"><a href="#services">Services</a><a href="#approach">Approach</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+  <a href="#pricing" class="btn line" style="padding:11px 20px">Start Trial</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker" data-r>Meta Advertising &middot; Done For You</div>
+  <h1 data-r style="--d:80ms">You keep your budget.<br>We fill your <span class="g">calendar</span>.</h1>
+  <p class="lead" data-r style="--d:200ms">Stratford runs Meta advertising for med spas, dental, cosmetic practices, and real estate &mdash; turning local attention into booked appointments, without ever holding your ad spend.</p>
+  <div class="acts" data-r style="--d:300ms">
+    <a href="#pricing" class="btn gold">Start Free Trial</a>
+    <a href="#contact" class="btn line">Speak With Us</a>
+  </div>
+  <div class="fine" data-r style="--d:420ms">14-Day Trial &nbsp;&middot;&nbsp; No Contract &nbsp;&middot;&nbsp; You Own Your Account</div>
+</div></header>
+
+<div class="verts"><div class="wrap"><div class="row" data-r>
+  <span>Med Spas</span><span>Dermatology</span><span>Cosmetic Dentistry</span><span>Plastic Surgery</span><span>Real Estate</span>
+</div></div></div>
+
+<section class="sec" id="services"><div class="wrap">
+  <div class="shead" data-r>
+    <div class="kicker">What We Do</div>
+    <h2>A complete growth engine, run for you.</h2>
+    <p>We don't simply place ads. We build the system that carries a stranger from a scroll to a booked appointment on your calendar.</p>
+  </div>
+  <div class="svc">
+    <div class="item" data-r><div class="num">01</div><h3>Targeted Meta Advertising</h3><p>Facebook and Instagram campaigns built to reach high-value local clients &mdash; patients or buyers &mdash; in your market.</p></div>
+    <div class="item" data-r><div class="num">02</div><h3>Instant Lead Response</h3><p>Every inquiry is answered the moment it arrives, so a warm lead is never lost to a busy front desk.</p></div>
+    <div class="item" data-r><div class="num">03</div><h3>Booked Appointments</h3><p>Interested leads are routed directly to your calendar. You simply show up and do your work.</p></div>
+    <div class="item" data-r><div class="num">04</div><h3>Creative &amp; Copy</h3><p>Advertising written and designed to match your brand and command attention in your market.</p></div>
+    <div class="item" data-r><div class="num">05</div><h3>Reporting &amp; Optimization</h3><p>A clear view of every lead and dollar, refined every week so your results compound.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="approach"><div class="wrap">
+  <div class="trust">
+    <div data-r>
+      <div class="kicker">The Stratford Promise</div>
+      <h2>Your money never leaves your hands.</h2>
+      <p class="body">Most agencies ask you to hand over your advertising budget. We don't. You pay Meta directly from your own account &mdash; we manage the campaigns for a single, flat fee. Your account, your data, and every lead remain yours. Always.</p>
+      <a href="#pricing" class="btn line" style="margin-top:28px">View Pricing</a>
+    </div>
+    <div class="tlist" data-r style="--d:140ms">
+      <div class="r"><b>You pay Meta directly</b><span>Your budget stays in your own account. We never touch it.</span></div>
+      <div class="r"><b>You own everything</b><span>Your account, your data, your leads &mdash; yours to keep, always.</span></div>
+      <div class="r"><b>One flat fee</b><span>No percentage of spend. No surprises. Fully transparent.</span></div>
+      <div class="r"><b>Fourteen-day trial</b><span>No contract, cancel anytime. We earn the relationship.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="shead" data-r style="text-align:center;margin-left:auto;margin-right:auto">
+    <div class="kicker">The Approach</div>
+    <h2>Four steps to a fuller calendar.</h2>
+  </div>
+  <div class="proc">
+    <div class="s" data-r><div class="n">I</div><h4>We Build</h4><p>Your campaigns are created and launched, tailored to your practice.</p></div>
+    <div class="s" data-r style="--d:90ms"><div class="n">II</div><h4>Leads Arrive</h4><p>Local clients respond &mdash; and receive an immediate reply.</p></div>
+    <div class="s" data-r style="--d:180ms"><div class="n">III</div><h4>They Book</h4><p>Interested leads land directly on your calendar.</p></div>
+    <div class="s" data-r style="--d:270ms"><div class="n">IV</div><h4>You Grow</h4><p>We optimize weekly and report. You simply show up.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="pricing"><div class="wrap">
+  <div class="shead" data-r style="text-align:center;margin-left:auto;margin-right:auto">
+    <div class="kicker">Pricing</div>
+    <h2>Transparent plans. No lock-in.</h2>
+    <p style="margin-left:auto;margin-right:auto">Begin with a fourteen-day trial. You pay Meta directly &mdash; our fee is flat and separate.</p>
+  </div>
+  <div class="prices">
+    <div class="price" data-r>
+      <div class="nm">Growth</div><div class="amt">$2,000<span> / month</span></div><div class="meta">Trial Available</div>
+      <div class="d">For practices ready to fill their calendar with local clients.</div>
+      <ul><li>Full campaign setup &amp; management</li><li>Custom ad copy &amp; creative</li><li>Live results dashboard</li><li>Weekly optimization</li><li>Full account ownership</li></ul>
+      <a href="https://buy.stripe.com/8x228k8HN0v69NJb4d0ZW02" class="btn line" style="justify-content:center">Start Growth</a>
+      <a href="how/growth.html" class="how">How Growth Works</a>
+    </div>
+    <div class="price feat" data-r style="--d:90ms">
+      <div class="nm">Bespoke</div><div class="amt">$3,000<span> / month</span></div><div class="meta">Most Chosen</div>
+      <div class="d">For high-volume and premium practices that want more.</div>
+      <ul><li>Everything in Growth</li><li>Priority strategy &amp; turnaround</li><li>Advanced audience &amp; funnels</li><li>Hands-on creative direction</li><li>Dedicated reporting</li></ul>
+      <a href="https://buy.stripe.com/eVqfZae270v6aRNegp0ZW03" class="btn gold" style="justify-content:center">Start Bespoke</a>
+      <a href="how/bespoke.html" class="how">How Bespoke Works</a>
+    </div>
+    <div class="price" data-r style="--d:180ms">
+      <div class="nm">Command</div><div class="amt">$10,000<span> / month</span></div><div class="meta">By Application</div>
+      <div class="d">The complete engine, run entirely for you.</div>
+      <ul><li>Everything in Bespoke</li><li>Automated follow-up &amp; booking</li><li>Done-for-you sales systems</li><li>Multi-channel reach</li><li>End-to-end lead tracking</li></ul>
+      <a href="#contact" class="btn line" style="justify-content:center">Apply</a>
+      <a href="how/command.html" class="how">How Command Works</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec cta" id="contact"><div class="wrap">
+  <div class="kicker" data-r>Ready When You Are</div>
+  <h2 data-r style="--d:120ms">Let's fill your calendar.</h2>
+  <p data-r style="--d:220ms">Begin a fourteen-day trial, or speak with Ethan directly. No pressure, no contract.</p>
+  <div class="acts" data-r style="--d:320ms">
+    <a href="#pricing" class="btn gold">Start Free Trial</a>
+    <a href="mailto:ethan@stratfordads.com" class="btn line">Email Ethan</a>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap in">
+  <div><div class="logo">Stratford</div><p class="tag">Meta advertising for med spas, dental, cosmetic practices, and real estate.</p></div>
+  <div class="cols">
+    <div><h5>Company</h5><a href="#services">Services</a><a href="#approach">Approach</a><a href="#pricing">Pricing</a></div>
+    <div><h5>Plans</h5><a href="how/growth.html">Growth</a><a href="how/bespoke.html">Bespoke</a><a href="how/command.html">Command</a></div>
+    <div><h5>Contact</h5><a href="mailto:ethan@stratfordads.com">ethan@stratfordads.com</a></div>
+  </div>
+</div></footer>
+<div class="copy">&copy; <span id="yr"></span> Stratford Advertisements</div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){const n=document.getElementById('nav');addEventListener('scroll',()=>{n.classList.toggle('sc',scrollY>30);},{passive:true});})();
+(function(){const els=document.querySelectorAll('[data-r]');const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;if(rm){els.forEach(e=>e.classList.add('in'));return;}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14,rootMargin:'0px 0px -6% 0px'});els.forEach(e=>io.observe(e));})();
+</script>
+</body></html>
