@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>WR Call Script — Private</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d10;--surface:#121519;--surface2:#161a1f;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);--ink:#eef1f4;--ink2:#c3cad2;--muted:#7f8a96;--muted2:#58616b;--gold:#c9a24b;--gold2:#d9bd79;--green:#5fcf8e;--red:#c96b5f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:400;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;line-height:1.6;padding-bottom:50px}
+.doc{max-width:760px;margin:0 auto}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20;backdrop-filter:blur(8px)}
+.bl{display:flex;align-items:center;gap:16px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;letter-spacing:.1em}.logo .d{color:var(--gold)}
+.divider{width:1px;height:20px;background:var(--line2)}
+.doclabel{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.priv{font-size:10px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(201,107,95,.4);border-radius:5px;padding:4px 9px}
+.cover{padding:36px 28px 28px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101317,var(--bg))}
+.cover .conf{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;line-height:1.1}
+.cover .sub{color:var(--muted);font-size:13.5px;margin-top:8px}
+.body{padding:28px}
+.sec{margin-bottom:24px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.sh{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--surface);border-bottom:1px solid var(--line)}
+.sh .no{font-size:12px;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
+.sh h2{font-size:14px;font-weight:600;letter-spacing:.01em}
+.sb{padding:16px 18px}
+.sb p{color:var(--ink2);font-size:14.5px;margin-bottom:10px}
+.sb p:last-child{margin-bottom:0}
+.say{border-left:2px solid var(--gold);padding:10px 0 10px 16px;margin:10px 0;color:var(--ink);font-size:15px;line-height:1.55;background:rgba(201,162,75,.04)}
+.say .lbl{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:5px;font-weight:600}
+.cue{font-size:13px;color:var(--muted);font-style:italic;margin-top:6px}
+ul{list-style:none;margin:4px 0}
+li{padding:7px 0 7px 20px;position:relative;font-size:14px;color:var(--ink2);border-bottom:1px solid var(--line)}
+li:last-child{border:none}
+li::before{content:"→";position:absolute;left:0;color:var(--gold)}
+.q{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.q .qh{padding:11px 15px;background:var(--surface2);font-size:13.5px;font-weight:600;color:var(--gold2)}
+.q .qa{padding:12px 15px;font-size:14px;color:var(--ink2);line-height:1.55}
+.remember{border:1px solid var(--line2);border-left:3px solid var(--gold);border-radius:8px;padding:18px 20px;background:var(--surface);margin-top:8px}
+.remember .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+.remember p{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.45;color:var(--ink);font-weight:600}
+.foot{padding:20px 28px;border-top:1px solid var(--line);color:var(--muted2);font-size:11px;text-align:center}
+</style></head>
+<body><div class="doc">
+
+<div class="bar">
+  <div class="bl"><div class="logo">Stratford<span class="d">.</span></div><div class="divider"></div><div class="doclabel">Call Script</div></div>
+  <div class="priv">Private</div>
+</div>
+
+<div class="cover">
+  <div class="conf">White Rocks · Michelle Doss</div>
+  <h1>The Call Playbook</h1>
+  <div class="sub">Keep this open during the call. Calm, curious, competent. Listen more than you talk.</div>
+</div>
+
+<div class="body">
+
+  <div class="sec"><div class="sh"><span class="no">00</span><h2>Before You Dial</h2></div><div class="sb">
+    <ul><li>Quiet room. Stand tall or sit up — your voice sounds more confident.</li><li>Water nearby. Have the proposal, dashboard &amp; ad concepts open in tabs.</li><li>Steve + your grandfather introduced you. You <b>belong</b> on this call.</li><li>Goal: NOT to close today. Goal = great conversation + permission to send a tailored proposal.</li></ul>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">01</span><h2>The Opener (first 20 sec)</h2></div><div class="sb">
+    <div class="say"><span class="lbl">Say</span>"Hi Michelle, thanks so much for making the time — really looking forward to this. Before I jump into how we work, I'd love to hear where you are in the launch and what you're focused on first — that way I can speak to exactly what's useful for you."</div>
+    <div class="cue">→ Then stop talking. Let her answer. Take notes.</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">02</span><h2>Discovery — Ask, Then Listen</h2></div><div class="sb">
+    <ul><li>Where are you in the timeline? How soon is launch?</li><li>First priority — for-sale residences, rentals, or the hotel?</li><li>Running any paid ads yet? Who handles marketing now?</li><li>What does success look like to you?</li><li>When a lead comes in, who does it go to? (Christie's / Dara / internal?)</li></ul>
+    <div class="cue">The more she talks, the more she trusts you — and the more she hands you to tailor the proposal.</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">03</span><h2>How We Work (your 30–45 sec)</h2></div><div class="sb">
+    <div class="say"><span class="lbl">Say</span>"We run Meta ads — Facebook and Instagram — built to find qualified, high-net-worth people and capture their interest in White Rocks. We don't replace your team or your brokerage — we feed them. We build a Priority Reservation interest list of qualified buyers before launch, and hand every lead, tracked, straight to your sales team. Two things that matter: you keep full control of your ad account and budget — it stays in your name, we never touch your spend. And you see every lead and every dollar in a clear dashboard."</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">04</span><h2>The White Rocks Edge</h2></div><div class="sb">
+    <div class="say"><span class="lbl">Say (with confidence)</span>"Honestly, the brand does a lot of the work. A Universal Music Group residence, in the Hill Country, among the first in the world — that story sells itself to the right person. My job is to put it in front of exactly the people who can afford it and want to be part of something iconic, and capture that interest before anyone else does."</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">05</span><h2>The Hard Questions (stay calm — these are good signs)</h2></div><div class="sb">
+    <div class="q"><div class="qh">"Can Facebook even reach buyers at this level?"</div><div class="qa">"Great question — and the right one. Meta isn't where a $2M residence gets bought; it's where the right buyer raises their hand. We target the signals of wealth — luxury real estate, private aviation, second-home behaviors, high-value zip codes — and build lookalike audiences from your own early registrants and Christie's buyer list. I optimize for lead QUALITY, not volume. I'd rather bring you 50 qualified prospects than 5,000 clicks."</div></div>
+    <div class="q"><div class="qh">"What's your experience / how old are you?"</div><div class="qa">"I specialize in exactly this — I keep it focused so I'm genuinely good at this one thing." <br><br>(If age asked directly:) "I'm young, honestly — but I've built the whole system to deliver, and we structure it so you take zero risk to find out: you keep your budget, and we can start with a focused pilot." <br><br>→ Then pivot: "What would your ideal first result look like?"</div></div>
+    <div class="q"><div class="qh">"What does it cost?"</div><div class="qa">"The management fee is flat and separate from your ad spend, which stays in your own account. I'd tailor the exact number to the scope you want — happy to put a short proposal together. We can start focused with a pilot and scale as it proves out."</div></div>
+    <div class="q"><div class="qh">"We already have an agency / brokerage."</div><div class="qa">"Perfect — I'm not replacing them, I feed them. I build the top-of-funnel pipeline and hand qualified leads straight to your team, tracked. I make their job easier."</div></div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">06</span><h2>The Close — Get ONE Next Step</h2></div><div class="sb">
+    <div class="say"><span class="lbl">Say</span>"This has been really helpful. Here's what I'd suggest — let me put together a short proposal: exactly what I'd run for the pre-launch, how we'd target, and what it would cost, tailored to what you're prioritizing. You review it, and if it's a fit we start with a focused pilot. Sound good?"</div>
+    <div class="cue">→ GET: permission to send the proposal + her priority + rough timeline. That's the win.</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><span class="no">07</span><h2>After the Call (same day)</h2></div><div class="sb">
+    <ul><li>Send the tailored proposal + dashboard + ad concept links same day, while fresh.</li><li>Short thank-you note recapping what she said she wants — shows you listened.</li><li>Tell Jarvis how it went — we tailor the proposal to exactly what she said.</li></ul>
+  </div></div>
+
+  <div class="remember">
+    <div class="lbl">The One Thing</div>
+    <p>You're not asking for a favor. You're offering to build them a qualified buyer pipeline using the most sellable brand story in Texas real estate. Calm, curious, competent. Listen more than you talk. Get the next step.</p>
+  </div>
+
+</div>
+
+<div class="foot">Private · Stratford Advertisements · For Ethan's eyes only</div>
+
+</div></body></html>
