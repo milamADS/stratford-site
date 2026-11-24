@@ -5,72 +5,106 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0b0d10;--surface:#131519;--surface2:#171a1f;--line:rgba(255,255,255,.08);--line2:rgba(201,162,75,.3);--ink:#eef1f4;--ink2:#c3cad2;--muted:#8a9099;--gold:#c9a24b;--gold2:#d9bd79}
+:root{--bg:#0b0d10;--surface:#121519;--surface2:#171a1f;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.14);--ink:#eef1f4;--ink2:#c3cad2;--muted:#7f8a96;--muted2:#58616b;--gold:#c9a24b;--gold2:#d9bd79}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:680px;margin:0 auto;padding:0 22px 80px}
-.bar{text-align:center;padding:40px 0 30px;border-bottom:1px solid var(--line);margin-bottom:36px}
-.logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.logo .d{color:var(--gold)}
-.welcome{text-align:center;margin-bottom:40px}
-.welcome .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.welcome h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;line-height:1.1;margin-bottom:14px}
-.welcome p{color:var(--ink2);font-size:15.5px;max-width:520px;margin:0 auto}
-form{display:flex;flex-direction:column;gap:26px}
-.section-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);font-weight:600;padding-top:14px;border-top:1px solid var(--line);margin-bottom:-6px}
-.field label{display:block;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px}
-.field .hint{font-size:12.5px;color:var(--muted);margin-bottom:8px;font-weight:300}
-.field input,.field textarea,.field select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:13px 15px;color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:300}
-.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--line2)}
-.field textarea{min-height:90px;resize:vertical}
-.radios{display:flex;flex-direction:column;gap:10px}
-.radio{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:14px 15px;cursor:pointer}
-.radio input{width:auto;margin-top:3px}
-.radio .rt b{display:block;font-size:14px;font-weight:500;color:var(--ink)}
-.radio .rt span{font-size:12.5px;color:var(--muted)}
-.submit{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#17130a;border:none;border-radius:9px;padding:16px;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:10px}
-.note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:18px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:400;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+.doc{max-width:720px;margin:0 auto}
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:10}
+.bl{display:flex;align-items:center;gap:16px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.logo .d{color:var(--gold)}
+.divider{width:1px;height:20px;background:var(--line2)}
+.doclabel{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ref{font-size:11px;color:var(--muted2);letter-spacing:.06em}
+/* cover */
+.cover{padding:46px 32px 34px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#101317,var(--bg))}
+.cover .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;line-height:1.1;margin-bottom:12px}
+.cover p{color:var(--ink2);font-size:15px;font-weight:300;max-width:540px}
+/* body */
+.body{padding:34px 32px 70px}
+form{display:flex;flex-direction:column;gap:0}
+.sec{margin-bottom:30px}
+.sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.sechead .no{font-size:11px;color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
+.sechead h2{font-size:14px;font-weight:600;letter-spacing:.01em}
+.field{margin-bottom:18px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.field .hint{font-size:12px;color:var(--muted);margin-bottom:9px;font-weight:300;line-height:1.5}
+.field input,.field textarea{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:12px 14px;color:var(--ink);font-family:inherit;font-size:14px;font-weight:300;transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold2)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted2)}
+.field textarea{min-height:84px;resize:vertical}
+.radios{display:flex;flex-direction:column;gap:8px}
+.radio{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:13px 15px;cursor:pointer;transition:border-color .2s}
+.radio:hover{border-color:var(--line2)}
+.radio input{width:auto;margin-top:3px;accent-color:var(--gold)}
+.radio .rt b{display:block;font-size:13.5px;font-weight:500;color:var(--ink)}
+.radio .rt span{font-size:12px;color:var(--muted);font-weight:300}
+.submit{width:100%;background:var(--ink);color:#0b0d10;border:none;border-radius:7px;padding:15px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px}
+.submit:hover{background:var(--gold2)}
+.note{text-align:center;font-size:12px;color:var(--muted2);margin-top:16px;letter-spacing:.02em}
+.foot{padding:20px 32px;border-top:1px solid var(--line);background:var(--surface);display:flex;justify-content:space-between;font-size:11px;color:var(--muted2);letter-spacing:.03em}
+@media(max-width:560px){.bar,.cover,.body,.foot{padding-left:20px;padding-right:20px}}
 </style></head>
-<body><div class="wrap">
-<div class="bar"><div class="logo">Stratford<span class="d">.</span></div></div>
+<body><div class="doc">
 
-<div class="welcome">
-  <div class="k">Welcome Aboard</div>
-  <h1>Let's get your campaigns built.</h1>
-  <p>Thanks for joining Stratford. Fill this out and we'll have your ad engine set up fast. Takes about 5 minutes - the more detail, the better your results.</p>
+<div class="bar">
+  <div class="bl"><div class="logo">Stratford<span class="d">.</span></div><div class="divider"></div><div class="doclabel">Client Onboarding</div></div>
+  <div class="ref">Confidential</div>
 </div>
 
+<div class="cover">
+  <div class="k">Welcome Aboard</div>
+  <h1>Let's build your campaigns.</h1>
+  <p>Thank you for partnering with Stratford. A few details and we'll have your ad engine built fast &mdash; the more precise you are, the sharper your results.</p>
+</div>
+
+<div class="body">
 <form action="https://formspree.io/f/xjywplnk" method="POST">
 
-  <div class="section-t">About You</div>
-  <div class="field"><label>Your name</label><input name="name" required/></div>
-  <div class="field"><label>Business name</label><input name="business" required/></div>
-  <div class="field"><label>Best email</label><input name="email" type="email" required/></div>
-  <div class="field"><label>Best phone</label><input name="phone" type="tel" required/></div>
-  <div class="field"><label>Website (if you have one)</label><input name="website"/></div>
-
-  <div class="section-t">What We're Advertising</div>
-  <div class="field"><label>What do you want more of?</label><div class="hint">e.g. buyer leads, seller/listing leads, new patients for specific treatments, registrations for a development</div><textarea name="goal" required></textarea></div>
-  <div class="field"><label>Your main services / what you sell</label><div class="hint">List the specific things you'd like us to promote</div><textarea name="services" required></textarea></div>
-  <div class="field"><label>Target area</label><div class="hint">City/region + how far out (e.g. "Austin + 25 miles")</div><input name="area" required/></div>
-  <div class="field"><label>Who should new leads go to?</label><div class="hint">Name, phone, and email for instant lead notifications</div><input name="leadcontact" required/></div>
-
-  <div class="section-t">Facebook / Instagram Setup</div>
-  <div class="field">
-    <label>Do you already have a Facebook Page and ad account?</label>
-    <div class="hint">No worries either way - if not, we set it all up for you.</div>
-    <div class="radios">
-      <label class="radio"><input type="radio" name="fbstatus" value="have-both" required/><span class="rt"><b>Yes - I have a Facebook Page AND run ads</b><span>We'll send you partner-access steps</span></span></label>
-      <label class="radio"><input type="radio" name="fbstatus" value="page-only"/><span class="rt"><b>I have a Facebook Page but have never run ads</b><span>We'll set up your ad account</span></span></label>
-      <label class="radio"><input type="radio" name="fbstatus" value="neither"/><span class="rt"><b>I don't have either / not sure</b><span>No problem - we build it all with you</span></span></label>
-    </div>
+  <div class="sec">
+    <div class="sechead"><span class="no">01</span><h2>About You</h2></div>
+    <div class="field"><label>Your name</label><input name="name" required/></div>
+    <div class="field"><label>Business name</label><input name="business" required/></div>
+    <div class="field"><label>Best email</label><input name="email" type="email" required/></div>
+    <div class="field"><label>Best phone</label><input name="phone" type="tel" required/></div>
+    <div class="field"><label>Website</label><input name="website" placeholder="Optional"/></div>
   </div>
-  <div class="field"><label>Facebook Page link (if you have one)</label><input name="fbpage" placeholder="facebook.com/yourbusiness"/></div>
 
-  <div class="section-t">Your Brand &amp; Assets</div>
-  <div class="field"><label>Anything else we should know?</label><div class="hint">Your style, what makes you different, photos/before-afters/renderings you can share, competitors, etc. (You can email assets to ethan@stratfordads.com too.)</div><textarea name="notes"></textarea></div>
+  <div class="sec">
+    <div class="sechead"><span class="no">02</span><h2>What We're Advertising</h2></div>
+    <div class="field"><label>What do you want more of?</label><div class="hint">e.g. buyer leads, seller/listing leads, new patients for specific treatments, registrations for a development</div><textarea name="goal" required></textarea></div>
+    <div class="field"><label>Your main services / what you sell</label><div class="hint">The specific things you'd like us to promote</div><textarea name="services" required></textarea></div>
+    <div class="field"><label>Target area</label><div class="hint">City/region + radius (e.g. "Austin + 25 miles")</div><input name="area" required/></div>
+    <div class="field"><label>Who should new leads go to?</label><div class="hint">Name, phone &amp; email for instant lead notifications</div><input name="leadcontact" required/></div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">03</span><h2>Facebook &amp; Instagram Setup</h2></div>
+    <div class="field">
+      <label>Do you already have a Facebook Page and ad account?</label>
+      <div class="hint">No worries either way &mdash; if not, we set it all up for you.</div>
+      <div class="radios">
+        <label class="radio"><input type="radio" name="fbstatus" value="have-both" required/><span class="rt"><b>Yes &mdash; I have a Page and run ads</b><span>We'll send partner-access steps</span></span></label>
+        <label class="radio"><input type="radio" name="fbstatus" value="page-only"/><span class="rt"><b>I have a Page but never ran ads</b><span>We'll set up your ad account</span></span></label>
+        <label class="radio"><input type="radio" name="fbstatus" value="neither"/><span class="rt"><b>I don't have either / not sure</b><span>We build it all with you</span></span></label>
+      </div>
+    </div>
+    <div class="field" style="margin-top:18px"><label>Facebook Page link</label><input name="fbpage" placeholder="facebook.com/yourbusiness (optional)"/></div>
+  </div>
+
+  <div class="sec">
+    <div class="sechead"><span class="no">04</span><h2>Brand &amp; Assets</h2></div>
+    <div class="field"><label>Anything else we should know?</label><div class="hint">Your style, what sets you apart, photos / before-afters / renderings you can share, competitors. You can also email assets to ethan@stratfordads.com.</div><textarea name="notes"></textarea></div>
+  </div>
 
   <button class="submit" type="submit">Submit &amp; Get Started</button>
-  <div class="note">We'll be in touch within 24 hours to kick off your campaigns.</div>
+  <div class="note">We'll be in touch within 24 hours to launch your campaigns.</div>
 </form>
+</div>
+
+<div class="foot"><span>Stratford Advertisements</span><span>Client Onboarding &middot; 2026</span></div>
 
 </div></body></html>
