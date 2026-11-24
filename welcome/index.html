@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Welcome to Stratford — Client Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d10;--surface:#131519;--surface2:#171a1f;--line:rgba(255,255,255,.08);--line2:rgba(201,162,75,.3);--ink:#eef1f4;--ink2:#c3cad2;--muted:#8a9099;--gold:#c9a24b;--gold2:#d9bd79}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 22px 80px}
+.bar{text-align:center;padding:40px 0 30px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.logo .d{color:var(--gold)}
+.welcome{text-align:center;margin-bottom:40px}
+.welcome .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.welcome h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;line-height:1.1;margin-bottom:14px}
+.welcome p{color:var(--ink2);font-size:15.5px;max-width:520px;margin:0 auto}
+form{display:flex;flex-direction:column;gap:26px}
+.section-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);font-weight:600;padding-top:14px;border-top:1px solid var(--line);margin-bottom:-6px}
+.field label{display:block;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.field .hint{font-size:12.5px;color:var(--muted);margin-bottom:8px;font-weight:300}
+.field input,.field textarea,.field select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:13px 15px;color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:300}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--line2)}
+.field textarea{min-height:90px;resize:vertical}
+.radios{display:flex;flex-direction:column;gap:10px}
+.radio{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:14px 15px;cursor:pointer}
+.radio input{width:auto;margin-top:3px}
+.radio .rt b{display:block;font-size:14px;font-weight:500;color:var(--ink)}
+.radio .rt span{font-size:12.5px;color:var(--muted)}
+.submit{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#17130a;border:none;border-radius:9px;padding:16px;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:10px}
+.note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:18px}
+</style></head>
+<body><div class="wrap">
+<div class="bar"><div class="logo">Stratford<span class="d">.</span></div></div>
+
+<div class="welcome">
+  <div class="k">Welcome Aboard</div>
+  <h1>Let's get your campaigns built.</h1>
+  <p>Thanks for joining Stratford. Fill this out and we'll have your ad engine set up fast. Takes about 5 minutes - the more detail, the better your results.</p>
+</div>
+
+<form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+
+  <div class="section-t">About You</div>
+  <div class="field"><label>Your name</label><input name="name" required/></div>
+  <div class="field"><label>Business name</label><input name="business" required/></div>
+  <div class="field"><label>Best email</label><input name="email" type="email" required/></div>
+  <div class="field"><label>Best phone</label><input name="phone" type="tel" required/></div>
+  <div class="field"><label>Website (if you have one)</label><input name="website"/></div>
+
+  <div class="section-t">What We're Advertising</div>
+  <div class="field"><label>What do you want more of?</label><div class="hint">e.g. buyer leads, seller/listing leads, new patients for specific treatments, registrations for a development</div><textarea name="goal" required></textarea></div>
+  <div class="field"><label>Your main services / what you sell</label><div class="hint">List the specific things you'd like us to promote</div><textarea name="services" required></textarea></div>
+  <div class="field"><label>Target area</label><div class="hint">City/region + how far out (e.g. "Austin + 25 miles")</div><input name="area" required/></div>
+  <div class="field"><label>Who should new leads go to?</label><div class="hint">Name, phone, and email for instant lead notifications</div><input name="leadcontact" required/></div>
+
+  <div class="section-t">Facebook / Instagram Setup</div>
+  <div class="field">
+    <label>Do you already have a Facebook Page and ad account?</label>
+    <div class="hint">No worries either way - if not, we set it all up for you.</div>
+    <div class="radios">
+      <label class="radio"><input type="radio" name="fbstatus" value="have-both" required/><span class="rt"><b>Yes - I have a Facebook Page AND run ads</b><span>We'll send you partner-access steps</span></span></label>
+      <label class="radio"><input type="radio" name="fbstatus" value="page-only"/><span class="rt"><b>I have a Facebook Page but have never run ads</b><span>We'll set up your ad account</span></span></label>
+      <label class="radio"><input type="radio" name="fbstatus" value="neither"/><span class="rt"><b>I don't have either / not sure</b><span>No problem - we build it all with you</span></span></label>
+    </div>
+  </div>
+  <div class="field"><label>Facebook Page link (if you have one)</label><input name="fbpage" placeholder="facebook.com/yourbusiness"/></div>
+
+  <div class="section-t">Your Brand &amp; Assets</div>
+  <div class="field"><label>Anything else we should know?</label><div class="hint">Your style, what makes you different, photos/before-afters/renderings you can share, competitors, etc. (You can email assets to ethan@stratfordads.com too.)</div><textarea name="notes"></textarea></div>
+
+  <button class="submit" type="submit">Submit &amp; Get Started</button>
+  <div class="note">We'll be in touch within 24 hours to kick off your campaigns.</div>
+</form>
+
+</div></body></html>
